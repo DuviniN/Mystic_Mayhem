@@ -1,21 +1,21 @@
-package Character;
-public abstract class Character {
+package Equipment;
+
+public abstract class Equipment {
+
     private int price;
-    private int attack;
+    private String attack;
     private int defence;
-    private int health;
+    private String health;
     private int speed;
 
-    public Character(int price,int attack,int defence,int  health,int speed) {
-        this.price = price;
-        this.attack = attack;
-        this.defence = defence;
-        this.health = health;
-        this.speed = speed;
-
+    public Equipment(int price,String attack,int defence,String health,int speed){
+        this.price=price;
+        this.attack=attack;
+        this.defence=defence;
+        this.health=health;
+        this.speed=speed;
     }
-
-    public Character(){
+    public Equipment(){
 
     }
 
@@ -23,15 +23,18 @@ public abstract class Character {
         return price;
     }
 
-    public int getAttack() {
+    public String getAttack() {
         return attack;
     }
+
     public int getDefence() {
         return defence;
     }
-    public int getHealth() {
+
+    public String getHealth() {
         return health;
     }
+
     public int getSpeed() {
         return speed;
     }
@@ -40,7 +43,7 @@ public abstract class Character {
         this.price = price;
     }
 
-    public void setAttack(int attack) {
+    public void setAttack(String attack) {
         this.attack = attack;
     }
 
@@ -48,7 +51,7 @@ public abstract class Character {
         this.defence = defence;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(String health) {
         this.health = health;
     }
 
