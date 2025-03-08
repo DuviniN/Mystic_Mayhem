@@ -8,6 +8,8 @@ public class User {
     private int gold_coins=500;
     private int user_ID;
     private int xp;
+    Character[] characters = new Character[5];
+
 
 
     public String getName(){
@@ -65,5 +67,17 @@ public class User {
         else{
             System.out.println("You don't have enough gold coins to buy this equipment");
         }
+    }
+    public void display (){
+        System.out.println("User name: "+user_name);
+        System.out.println("Name: "+name);
+        System.out.println("Gold coins: "+gold_coins);
+        System.out.println("User ID: "+user_ID);
+        System.out.println("XP: "+xp);
+        System.out.println("Army");
+        for(Character charact:characters){
+            System.out.println(characters);
+        }
+
     }
 }
