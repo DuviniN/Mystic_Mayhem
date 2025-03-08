@@ -1,4 +1,6 @@
 package Equipment.Armour;
+import Character.Archers.Archer;
+import Character.Archers.Shooter;
 import Character.Character;
 public class Chainmail extends Armour {
 
@@ -6,17 +8,17 @@ public class Chainmail extends Armour {
         super.setPrice(70);
     }
 
-    public void defence(Character character) {
-        character.setDefence(character.getDefence()+1);
+    public void equipto(Character character){
+        character.setDefence(character.getDefence() + 1);
+        character.setSpeed(character.getSpeed() - 1);
+        character.setPrice((character.getPrice()*20)/100 + super.getPrice());
     }
-    public void speed(Character character) {
-        character.setSpeed(character.getSpeed()-1);
+    public void removefrom(Character character){
+        character.setDefence(character.getDefence() - 1);
+        character.setSpeed(character.getSpeed() + 1);
+        character.setPrice(super.getPrice()-(character.getPrice()*20)/100);
     }
 
-    public void health(Character character) {
-        character.getHealth();
-    }
-    public void attack(Character character) {
-        character.getAttack();
-    }
+
+
 }

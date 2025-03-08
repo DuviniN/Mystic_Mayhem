@@ -3,20 +3,17 @@ import Character.Character;
 
 public class Excalibur extends Artefacts{
 
+
     public Excalibur(){
         super.setPrice(150);
     }
-    public void defence(Character character) {
-        character.getDefence();
-    }
-    public void speed(Character character) {
-        character.getSpeed();
-    }
 
-    public void health(Character character) {
-        character.getHealth();
+    public void equipto(Character character){
+        character.setAttack(character.getAttack() + 2);
+        character.setPrice((character.getPrice()*20)/100 + super.getPrice());
     }
-    public void attack(Character character) {
-        character.setAttack(character.getAttack()+2);
+    public void removefrom(Character character){
+        character.setAttack(character.getAttack() -2);
+        character.setPrice(super.getPrice()-(character.getPrice()*20)/100);
     }
 }

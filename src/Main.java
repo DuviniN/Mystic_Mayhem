@@ -13,6 +13,7 @@ import Character.Healers.Saint;
 import Character.Healers.Soother;
 import Character.Knights.Cavalier;
 import Character.Knights.Knight;
+import Equipment.Armour.Chainmail;
 
 
 public class Main {
@@ -20,6 +21,8 @@ public class Main {
 
         Shooter shooter=new Shooter();
         System.out.println(shooter.getAttack());
+        Chainmail chainmail=new Chainmail();
+
 
 
 

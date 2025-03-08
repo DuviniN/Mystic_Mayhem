@@ -4,23 +4,14 @@ import Equipment.Equipment;
 
 public class Artefacts extends Equipment {
 
-    public Artefacts(int price){
-        super(price);
-    }
 
     public Artefacts(){
+        super.setPrice(100);
+    }
+    public void equipto(Character character){
 
     }
-    public void attack(){
-
-    }
-    public void defence(){
-
-    }
-    public void health(){
-
-    }
-    public void speed(){
+    public void removefrom(Character character){
 
     }
 }
