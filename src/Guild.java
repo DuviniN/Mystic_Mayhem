@@ -135,39 +135,111 @@ import Character.Healers.Healer;
             }
         }
        public Character equalDefence(Character character1,Character character2){
-            if(character1==getMage() ||character2==getMage()){
-                return getMage();
+            if(character1 instanceof Healer){
+                return character1;
             }
-            else if(character1==getKnight() || character2==getKnight()){
-                return getKnight();
+            else if (character2 instanceof  Healer) {
+                return character2;
+
             }
-            else if(character1==getArcher() || character2==getArcher()){
-                return getArcher();
-            }
-            else if(character1==getMythical_Creature() || character2==getMythical_Creature()){
-                return getMythical_Creature();
-            }
-            else{
-                return getHealer();
-            }
+           if(character1 instanceof Mythical_Creature){
+               return character1;
+           }
+           else if (character2 instanceof  Mythical_Creature) {
+               return character2;
+
+           }
+           if(character1 instanceof Archer){
+               return character1;
+           }
+           else if (character2 instanceof  Archer) {
+               return character2;
+
+           }
+           if(character1 instanceof Knight){
+               return character1;
+           }
+           else if (character2 instanceof  Knight) {
+               return character2;
+
+           }
+           if(character1 instanceof Mage){
+               return character1;
+           }
+           else {
+               return character2;
+
+           }
+
        }
         public Character equalSpeed(Character character1,Character character2){
-            if(character1==getArcher() ||character2==getArcher()){
-                return getArcher();
+            if(character1 instanceof Archer){
+                return character1;
             }
-            else if(character1==getKnight() || character2==getKnight()){
-                return getKnight();
+            else if (character2 instanceof Archer) {
+                return character2;
+
             }
-            else if(character1==getMythical_Creature() || character2==getMythical_Creature()){
-                return getArcher();
+            if(character1 instanceof Knight){
+                return character1;
             }
-            else if(character1==getMage() || character2==getMage()){
-                return getMythical_Creature();
+            else if (character2 instanceof Knight) {
+                return character2;
+
             }
-            else{
-                return getHealer();
+            if(character1 instanceof Mythical_Creature){
+                return character1;
             }
+            else if (character2 instanceof  Mythical_Creature) {
+                return character2;
+
+            }
+            if(character1 instanceof Mage){
+                return character1;
+            }
+            else if (character2 instanceof  Mage) {
+                return character2;
+
+            }
+            if(character1 instanceof Healer){
+                return character1;
+            }
+            else {
+                return character2;
+
+            }
+
         }
+
+        public Character getdefencer(){
+            Character minDefencer= guild.get(0);
+            for(int i=1;i<5;i++){
+                if(guild.get(i).getDefence()<minDefencer.getDefence()){
+                    minDefencer= guild.get(i);
+                }
+                else if(guild.get(i).getDefence()== minDefencer.getDefence()){
+                    minDefencer=equalDefence(guild.get(i),minDefencer);
+                }
+            }
+            return minDefencer;
+        }
+
+        public Character getFaster(){
+            Character maxspeed=guild.get(0);
+            for(int i=1;i<5;i++){
+                if(guild.get(i).getDefence()>maxspeed.getDefence()){
+                    maxspeed= guild.get(i);
+                }
+                else if(guild.get(i).getDefence()== maxspeed.getDefence()){
+                    maxspeed=equalSpeed(guild.get(i),maxspeed);
+                }
+            }
+            return maxspeed;
+
+
+        }
+
+
 
 
 
