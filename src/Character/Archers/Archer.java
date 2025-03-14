@@ -3,7 +3,8 @@ import Character.Character;
 
 public class Archer extends Character {
 
-    public Archer(){
+
+    public void attack(){
 
     }
 }

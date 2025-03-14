@@ -6,18 +6,6 @@ public abstract class Character {
     private int health;
     private int speed;
 
-    public Character(int price,int attack,int defence,int  health,int speed) {
-        this.price = price;
-        this.attack = attack;
-        this.defence = defence;
-        this.health = health;
-        this.speed = speed;
-
-    }
-
-    public Character(){
-
-    }
 
     public int getPrice() {
         return price;

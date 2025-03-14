@@ -1,4 +1,6 @@
 package Equipment;
+import Character.Character;
+
 
 
 public abstract class Equipment {
@@ -11,6 +13,6 @@ public abstract class Equipment {
         return price;
     }
 
-    public abstract void equipto(Character character);
-    public abstract void removefrom(Character character);
+    public abstract void getEquipment(Character character);
+    public abstract void removeEquipment(Character character);
 }

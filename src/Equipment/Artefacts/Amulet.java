@@ -7,14 +7,14 @@ public class Amulet extends Artefacts{
         super.setPrice(200);
     }
 
-    public void equipto(Character character){
+    public void getEquipment(Character character){
         character.setAttack(character.getAttack() + 1);
         character.setSpeed(character.getSpeed() +1);
         character.setDefence(character.getDefence() -1);
         character.setHealth(character.getHealth() +1);
         character.setPrice((character.getPrice()*20)/100 + super.getPrice());
     }
-    public void removefrom(Character character){
+    public void removeEquipment(Character character){
         character.setDefence(character.getDefence() +1);
         character.setSpeed(character.getSpeed() -1);
         character.setAttack(character.getAttack() -1);

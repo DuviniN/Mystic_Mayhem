@@ -8,11 +8,11 @@ public class Excalibur extends Artefacts{
         super.setPrice(150);
     }
 
-    public void equipto(Character character){
+    public void getEquipment(Character character){
         character.setAttack(character.getAttack() + 2);
         character.setPrice((character.getPrice()*20)/100 + super.getPrice());
     }
-    public void removefrom(Character character){
+    public void removeEquipment(Character character){
         character.setAttack(character.getAttack() -2);
         character.setPrice(super.getPrice()-(character.getPrice()*20)/100);
     }

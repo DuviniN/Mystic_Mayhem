@@ -3,7 +3,5 @@ import Character.Character;
 
 public class Knight extends Character {
 
-    public Knight(){
 
-    }
 }

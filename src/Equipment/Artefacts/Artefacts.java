@@ -1,17 +1,17 @@
 package Equipment.Artefacts;
 
 import Equipment.Equipment;
+import Character.Character;
 
-public class Artefacts extends Equipment {
+public abstract class Artefacts extends Equipment {
 
 
     public Artefacts(){
+
         super.setPrice(100);
     }
-    public void equipto(Character character){
+    public abstract void getEquipment(Character character);
+    public abstract void removeEquipment(Character character);
 
-    }
-    public void removefrom(Character character){
 
-    }
 }

@@ -8,4 +8,9 @@ public class Ranger extends Archer {
         super.setHealth(8);
         super.setSpeed(10);
     }
+
+    @Override
+    public void attack() {
+        super.attack();
+    }
 }

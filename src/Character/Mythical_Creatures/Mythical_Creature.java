@@ -3,7 +3,5 @@ import Character.Character;
 
 public class Mythical_Creature extends Character {
 
-    public Mythical_Creature(){
 
-    }
 }

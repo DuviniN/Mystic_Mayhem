@@ -3,7 +3,5 @@ import Character.Character;
 
 public class Mage extends Character {
 
-    public Mage(){
 
-    }
 }

@@ -1,5 +1,11 @@
+import Character.Archers.Archer;
 import Character.Character;
+import Character.Healers.Healer;
+import Character.Knights.Knight;
+import Character.Mages.Mage;
+import Character.Mythical_Creatures.Mythical_Creature;
 import Equipment.Equipment;
+import java.util.Scanner;
 
 public class User {
 
@@ -8,7 +14,12 @@ public class User {
     private int gold_coins=500;
     private int user_ID;
     private int xp;
-    Character[] characters = new Character[5];
+    Archer archer;
+    Healer healer;
+    Knight knight;
+    Mage mage;
+    Mythical_Creature mythicalCreature;
+
 
 
 
@@ -45,29 +56,6 @@ public class User {
         this.xp = xp;
     }
 
-    public void buyCharacter(Character character){
-        if(gold_coins>=character.getPrice()){
-            gold_coins-=character.getPrice();
-            System.out.println("You have bought a "+character);
-        }
-        else{
-            System.out.println("You don't have enough gold coins to buy this character");
-        }
-    }
-    public void sellCharacter(Character character){
-        gold_coins+=(character.getPrice()*90)/100;
-        System.out.println("You have sold a "+character);
-    }
-
-    public void buyEquipment(Equipment equipment){
-        if(gold_coins>=equipment.getPrice()){
-            gold_coins-=equipment.getPrice();
-            System.out.println("You have bought a "+equipment);
-        }
-        else{
-            System.out.println("You don't have enough gold coins to buy this equipment");
-        }
-    }
     public void display (){
         System.out.println("User name: "+user_name);
         System.out.println("Name: "+name);
@@ -75,9 +63,11 @@ public class User {
         System.out.println("User ID: "+user_ID);
         System.out.println("XP: "+xp);
         System.out.println("Army");
-        for(Character charact:characters){
-            System.out.println(characters);
-        }
+        System.out.println(archer);
+        System.out.println(healer);
+        System.out.println(knight);
+        System.out.println(mage);
+        System.out.println(mythicalCreature);
 
     }
 }
