@@ -6,8 +6,8 @@ import Character.Character;
 public abstract class Equipment {
     private int price;
 
-    public void setPrice(int price){
-        this.price = price;
+    protected void setPrice(int price){
+        this.price=price;
     }
     public int getPrice(){
         return price;
