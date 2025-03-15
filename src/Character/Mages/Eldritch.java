@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Eldritch extends Mage {
     public Eldritch(){
-        super.setPrice(270.0);
+        super.setPrice(270);
         super.setAttack(19);
         super.setDefence(17);
-        super.setHealth(18.0);
+        super.setHealth(18);
         super.setSpeed(14);
     }
     public void setBattleGround(String homeGround){
@@ -33,7 +33,7 @@ public class Eldritch extends Mage {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

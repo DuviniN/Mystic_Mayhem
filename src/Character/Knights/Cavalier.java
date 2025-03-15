@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Cavalier extends Knight {
     public Cavalier(){
-        super.setPrice(110.0);
+        super.setPrice(110);
         super.setAttack(10);
         super.setDefence(12);
-        super.setHealth(7.0);
+        super.setHealth(7);
         super.setSpeed(10);
     }
     public void setBattleGround(String homeGround){
@@ -37,7 +37,7 @@ public class Cavalier extends Knight {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

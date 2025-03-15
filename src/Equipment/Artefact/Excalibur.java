@@ -5,7 +5,7 @@ public class Excalibur extends Artefact {
 
 
     public Excalibur(){
-        super.setPrice(150.0);
+        super.setPrice(150);
     }
 
     public void getEquipment(Character character){

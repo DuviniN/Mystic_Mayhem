@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Zoro extends Knight {
     public Zoro(){
-        super.setPrice(180.0);
+        super.setPrice(180);
         super.setAttack(17);
         super.setDefence(16);
-        super.setHealth(13.0);
+        super.setHealth(13);
         super.setSpeed(14);
     }
     public void setBattleGround(String homeGround){
@@ -37,7 +37,7 @@ public class Zoro extends Knight {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

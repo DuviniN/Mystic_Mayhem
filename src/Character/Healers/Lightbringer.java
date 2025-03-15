@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Lightbringer extends Healer {
     public Lightbringer(){
-        super.setPrice(260.0);
+        super.setPrice(260);
         super.setAttack(17);
         super.setDefence(15);
-        super.setHealth(19.0);
+        super.setHealth(19);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -39,7 +39,7 @@ public class Lightbringer extends Healer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void heal(Character character){
 
     }
 }

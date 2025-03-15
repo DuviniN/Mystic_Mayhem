@@ -2,10 +2,10 @@ package Character.Mages;
 import Character.Character;
 public class Conjurer extends Mage {
     public Conjurer(){
-        super.setPrice(195.0);
+        super.setPrice(195);
         super.setAttack(18);
         super.setDefence(15);
-        super.setHealth(14.0);
+        super.setHealth(14);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -36,7 +36,7 @@ public class Conjurer extends Mage {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

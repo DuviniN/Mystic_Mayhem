@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Squire extends Knight {
     public Squire(){
-        super.setPrice(85.0);
+        super.setPrice(85);
         super.setAttack(8);
         super.setDefence(9);
-        super.setHealth(7.0);
+        super.setHealth(7);
         super.setSpeed(8);
 
     }
@@ -48,7 +48,7 @@ public class Squire extends Knight {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

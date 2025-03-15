@@ -2,7 +2,7 @@ package Character.Mages;
 import Character.Character;
 
 public abstract class Mage extends Character {
-    public abstract void attact(Character character);
+    public abstract void attack(Character character);
 
 
 }

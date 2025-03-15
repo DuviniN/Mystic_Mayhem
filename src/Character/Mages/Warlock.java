@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Warlock extends Mage {
     public Warlock(){
-        super.setPrice(100.0);
+        super.setPrice(100);
         super.setAttack(12);
         super.setDefence(7);
-        super.setHealth(10.0);
+        super.setHealth(10);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -47,7 +47,7 @@ public class Warlock extends Mage {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

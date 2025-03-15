@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Medic extends Healer {
     public Medic(){
-        super.setPrice(125.0);
+        super.setPrice(125);
         super.setAttack(12);
         super.setDefence(9);
-        super.setHealth(10.0);
+        super.setHealth(10);
         super.setSpeed(7);
     }
     public void setBattleGround(String homeGround){
@@ -37,7 +37,7 @@ public class Medic extends Healer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void heal(Character character){
 
     }
 }

@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Hydra extends Mythical_Creature {
     public Hydra(){
-        super.setPrice(205.0);
+        super.setPrice(205);
         super.setAttack(12);
         super.setDefence(16);
-        super.setHealth(15.0);
+        super.setHealth(15);
         super.setSpeed(11);
     }
     public void setBattleGround(String homeGround){
@@ -47,7 +47,7 @@ public class Hydra extends Mythical_Creature {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

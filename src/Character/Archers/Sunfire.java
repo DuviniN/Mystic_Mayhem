@@ -5,10 +5,10 @@ import Character.Character;
 
 public class Sunfire extends Archer {
     public Sunfire(){
-        super.setPrice(160.0);
+        super.setPrice(160);
         super.setAttack(15);
         super.setDefence(5);
-        super.setHealth(7.0);
+        super.setHealth(7);
         super.setSpeed(14);
     }
     public void setBattleGround(String homeGround){
@@ -41,7 +41,7 @@ public class Sunfire extends Archer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

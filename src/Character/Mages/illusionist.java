@@ -3,10 +3,10 @@ import Character.Character;
 
 public class illusionist extends Mage {
     public illusionist(){
-        super.setPrice(120.0);
+        super.setPrice(120);
         super.setAttack(13);
         super.setDefence(8);
-        super.setHealth(12.0);
+        super.setHealth(12);
         super.setSpeed(14);
     }
     public void setBattleGround(String homeGround){
@@ -33,7 +33,7 @@ public class illusionist extends Mage {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

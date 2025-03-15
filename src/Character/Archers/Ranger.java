@@ -4,10 +4,10 @@ import Character.Character;
 public class Ranger extends Archer {
 
     public Ranger(){
-        super.setPrice(115.0);
+        super.setPrice(115);
         super.setAttack(14);
         super.setDefence(5);
-        super.setHealth(8.0);
+        super.setHealth(8);
         super.setSpeed(10);
     }
 
@@ -39,7 +39,7 @@ public class Ranger extends Archer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

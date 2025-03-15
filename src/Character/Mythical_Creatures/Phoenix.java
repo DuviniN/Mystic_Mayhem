@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Phoenix extends Mythical_Creature {
     public Phoenix(){
-        super.setPrice(275.0);
+        super.setPrice(275);
         super.setAttack(17);
         super.setDefence(13);
-        super.setHealth(17.0);
+        super.setHealth(17);
         super.setSpeed(19);
     }
     public void setBattleGround(String homeGround){
@@ -39,7 +39,7 @@ public class Phoenix extends Mythical_Creature {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

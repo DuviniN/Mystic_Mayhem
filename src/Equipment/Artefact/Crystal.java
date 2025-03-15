@@ -4,7 +4,7 @@ import Character.Character;
 public class Crystal extends Artefact {
 
     public Crystal(){
-        super.setPrice(210.0);
+        super.setPrice(210);
     }
 
     public void getEquipment(Character character){

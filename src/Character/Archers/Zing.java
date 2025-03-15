@@ -5,10 +5,10 @@ import Character.Character;
 
 public class Zing extends Archer {
     public Zing(){
-        super.setPrice(200.0);
+        super.setPrice(200);
         super.setAttack(16);
         super.setDefence(9);
-        super.setHealth(11.0);
+        super.setHealth(11);
         super.setSpeed(14);
     }
     public void setBattleGround(String homeGround){
@@ -41,7 +41,7 @@ public class Zing extends Archer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

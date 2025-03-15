@@ -4,10 +4,10 @@ import Character.Character;
 public class Shooter extends Archer {
 
     public Shooter(){
-        super.setPrice(80.0);
+        super.setPrice(80);
         super.setAttack(11);
         super.setDefence(4);
-        super.setHealth(6.0);
+        super.setHealth(6);
         super.setSpeed(9);
     }
     public void setBattleGround(String homeGround){
@@ -38,7 +38,7 @@ public class Shooter extends Archer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 

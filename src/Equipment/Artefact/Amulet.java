@@ -4,7 +4,7 @@ import Character.Character;
 public class Amulet extends Artefact {
 
     public Amulet(){
-        super.setPrice(200.0);
+        super.setPrice(200);
     }
 
     public void getEquipment(Character character){

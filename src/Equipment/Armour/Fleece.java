@@ -4,7 +4,7 @@ import Character.Character;
 public class Fleece extends Armour{
 
     public Fleece(){
-        super.setPrice(150.0);
+        super.setPrice(150);
     }
 
     public void getEquipment(Character character){

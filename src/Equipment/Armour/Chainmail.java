@@ -5,7 +5,7 @@ import Character.Character;
 public class Chainmail extends Armour {
 
     public Chainmail(){
-        super.setPrice(70.0);
+        super.setPrice(70);
     }
 
     public void getEquipment(Character character){

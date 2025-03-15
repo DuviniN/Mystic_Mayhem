@@ -5,10 +5,10 @@ import Character.Character;
 
 public class Saggitarius extends Archer {
     public Saggitarius(){
-        super.setPrice(230.0);
+        super.setPrice(230);
         super.setAttack(18);
         super.setDefence(7);
-        super.setHealth(12.0);
+        super.setHealth(12);
         super.setSpeed(17);
     }
     public void setBattleGround(String homeGround){
@@ -35,7 +35,7 @@ public class Saggitarius extends Archer {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

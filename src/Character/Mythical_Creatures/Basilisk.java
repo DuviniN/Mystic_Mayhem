@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Basilisk extends Mythical_Creature {
     public Basilisk(){
-        super.setPrice(165.0);
+        super.setPrice(165);
         super.setAttack(15);
         super.setDefence(11);
-        super.setHealth(10.0);
+        super.setHealth(10);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -47,7 +47,7 @@ public class Basilisk extends Mythical_Creature {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

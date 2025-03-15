@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Swiftblade extends Knight {
     public Swiftblade() {
-        super.setPrice(250.0);
+        super.setPrice(250);
         super.setAttack(18);
         super.setDefence(20);
-        super.setHealth(17.0);
+        super.setHealth(17);
         super.setSpeed(13);
     }
     public void setBattleGround(String homeGround){
@@ -47,7 +47,7 @@ public class Swiftblade extends Knight {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }

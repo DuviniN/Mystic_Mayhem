@@ -4,7 +4,7 @@ public class Regalia extends Armour{
 
 
     public Regalia(){
-        super.setPrice(105.0);
+        super.setPrice(105);
     }
 
     public void getEquipment(Character character){

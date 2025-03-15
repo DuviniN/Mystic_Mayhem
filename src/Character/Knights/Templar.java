@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Templar extends Knight {
     public Templar(){
-        super.setPrice(155.0);
+        super.setPrice(155);
         super.setAttack(14);
         super.setDefence(16);
-        super.setHealth(12.0);
+        super.setHealth(12);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -39,7 +39,7 @@ public class Templar extends Knight {
                 break;
         }
     }
-    public void attact(Character character){
+    public void attack(Character character){
 
     }
 }
