@@ -235,8 +235,16 @@ import Character.Healers.Healer;
                 }
             }
             return maxspeed;
+        }
 
-
+        public Character getMinHealth(){
+            Character minHealth=guild.get(0);
+            for(int i=1;i<5;i++){
+                if(guild.get(i).getHealth()<minHealth.getHealth()){
+                    minHealth=guild.get(i);
+                }
+            }
+            return minHealth;
         }
 
         /* private int getSpeedPriority(Character character){
