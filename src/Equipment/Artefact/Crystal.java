@@ -1,10 +1,10 @@
-package Equipment.Artefacts;
+package Equipment.Artefact;
 import Character.Character;
 
-public class Crystal extends Artefacts{
+public class Crystal extends Artefact {
 
     public Crystal(){
-        super.setPrice(210);
+        super.setPrice(210.0);
     }
 
     public void getEquipment(Character character){

@@ -1,10 +1,14 @@
 package Character.Archers;
 import Character.Character;
 
-public class Archer extends Character {
+public abstract class Archer extends Character {
 
 
-    public void attack(){
+    public void setBattleGround(String homeGround){
 
     }
+    public void resetBattleGround(String homeGround){
+
+    }
+    public abstract void attact(Character character);
 }

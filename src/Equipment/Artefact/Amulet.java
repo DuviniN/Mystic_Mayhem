@@ -1,10 +1,10 @@
-package Equipment.Artefacts;
+package Equipment.Artefact;
 import Character.Character;
 
-public class Amulet extends Artefacts{
+public class Amulet extends Artefact {
 
     public Amulet(){
-        super.setPrice(200);
+        super.setPrice(200.0);
     }
 
     public void getEquipment(Character character){

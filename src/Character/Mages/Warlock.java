@@ -1,11 +1,53 @@
 package Character.Mages;
+import Character.Character;
 
 public class Warlock extends Mage {
     public Warlock(){
-        super.setPrice(100);
+        super.setPrice(100.0);
         super.setAttack(12);
         super.setDefence(7);
-        super.setHealth(10);
+        super.setHealth(10.0);
         super.setSpeed(12);
+    }
+    public void setBattleGround(String homeGround){
+        switch (homeGround){
+            case "Hillcrest":
+                super.setSpeed(super.getSpeed()-1);
+                break;
+            case "Marchland":
+                super.setDefence(super.getDefence()+2);
+                break;
+            case "Desert":
+                super.setHealth(super.getHealth()-1);
+                break;
+            case "Arcane":
+                super.setDefence(super.getDefence()-1);
+                super.setSpeed(super.getSpeed()-1);
+                break;
+            default:
+                break;
+        }
+    }
+    public void resetBattleGround(String homeGround){
+        switch (homeGround){
+            case "Hillcrest":
+                super.setSpeed(super.getSpeed()+1);
+                break;
+            case "Marchland":
+                super.setDefence(super.getDefence()-2);
+                break;
+            case "Desert":
+                super.setHealth(super.getHealth()+1);
+                break;
+            case "Arcane":
+                super.setDefence(super.getDefence()+1);
+                super.setSpeed(super.getSpeed()+1);
+                break;
+            default:
+                break;
+        }
+    }
+    public void attact(Character character){
+
     }
 }

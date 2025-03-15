@@ -1,7 +1,8 @@
 package Character.Mages;
 import Character.Character;
 
-public class Mage extends Character {
+public abstract class Mage extends Character {
+    public abstract void attact(Character character);
 
 
 }

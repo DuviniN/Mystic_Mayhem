@@ -1,7 +1,8 @@
 package Character.Knights;
 import Character.Character;
 
-public class Knight extends Character {
+public abstract class Knight extends Character {
+    public abstract void attact(Character character);
 
 
 }

@@ -134,7 +134,7 @@ import Character.Healers.Healer;
                 System.out.println("No mythical creature in the guild");
             }
         }
-       public Character equalDefence(Character character1,Character character2){
+       public Character getDefencePriority(Character character1,Character character2){
             if(character1 instanceof Healer){
                 return character1;
             }
@@ -172,7 +172,7 @@ import Character.Healers.Healer;
            }
 
        }
-        public Character equalSpeed(Character character1,Character character2){
+        public Character getSpeedPriority(Character character1,Character character2){
             if(character1 instanceof Archer){
                 return character1;
             }
@@ -218,7 +218,7 @@ import Character.Healers.Healer;
                     minDefencer= guild.get(i);
                 }
                 else if(guild.get(i).getDefence()== minDefencer.getDefence()){
-                    minDefencer=equalDefence(guild.get(i),minDefencer);
+                    minDefencer=getDefencePriority(guild.get(i),minDefencer);
                 }
             }
             return minDefencer;
@@ -231,13 +231,42 @@ import Character.Healers.Healer;
                     maxspeed= guild.get(i);
                 }
                 else if(guild.get(i).getDefence()== maxspeed.getDefence()){
-                    maxspeed=equalSpeed(guild.get(i),maxspeed);
+                    maxspeed=getSpeedPriority(guild.get(i),maxspeed);
                 }
             }
             return maxspeed;
 
 
         }
+
+        /* private int getSpeedPriority(Character character){
+             if(character instanceof Healer)return 1;
+             if(character instanceof Mage)return 2;
+             if(character instanceof Mythical_Creature)return 3;
+             if(character instanceof Knight)return 4;
+             if(character instanceof Archer)return 5;
+             return1;
+           }
+
+           private int getDefensePriority(Character character){
+             if(character instanceof Healer)return 1;
+             if(character instanceof Mythical_Creature)return 2;
+             if(character instanceof Archer)return 3;
+             if(character instanceof Knight)return 4;
+             if(character instanceof Mage)return 5;
+             return Integer.MAX_VALUE;
+            }
+
+
+            public Character getFastestCharacter(){
+               return guild.stream().max(Comparator.comparingInt(Character::getSpeed).thenComparing(this::getSpeedPriority)).orElse(null);
+            }
+
+            public Character getLowestDefenseCharacterr(){
+               return guild.stream().min(Comparator.comparingInt(Character::getDefence).thenComparing(this::getDefensePriority)).orElse(null);
+            }
+
+         */
 
 
 

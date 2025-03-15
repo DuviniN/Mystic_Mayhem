@@ -4,12 +4,12 @@ import Character.Character;
 
 
 public abstract class Equipment {
-    private int price;
+    private double price;
 
-    protected void setPrice(int price){
+    protected void setPrice(double price){
         this.price=price;
     }
-    public int getPrice(){
+    public double getPrice(){
         return price;
     }
 
