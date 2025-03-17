@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Warlock extends Mage {
     public Warlock(){
-        super.setPrice(100);
+        super.setPrice(100.0);
         super.setAttack(12);
         super.setDefence(7);
-        super.setHealth(10);
+        super.setHealth(10.0);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -47,7 +47,21 @@ public class Warlock extends Mage {
                 break;
         }
     }
-    public void attack(Character character){
-
+    public void setDefaultHealth(){
+        super.setHealth(10.0);
+    }
+    public void attack(Character opponent){
+        double newHealth;
+        newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+        if(newHealth<=0){
+            opponent.setHealth(0);
+            System.out.println(opponent.getClass().getSimpleName()+" died");
+            System.out.println("Warlock attacks "+opponent.getClass().getSimpleName());
+        }
+        else{
+            opponent.setHealth(newHealth);
+            System.out.println("Warlock attacks "+opponent.getClass().getSimpleName());
+            System.out.println(opponent.getClass().getSimpleName()+"'s new health : "+" "+newHealth);
+        }
     }
 }

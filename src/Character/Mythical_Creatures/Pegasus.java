@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Pegasus extends Mythical_Creature {
     public Pegasus(){
-        super.setPrice(340);
+        super.setPrice(340.0);
         super.setAttack(14);
         super.setDefence(18);
-        super.setHealth(20);
+        super.setHealth(20.0);
         super.setSpeed(20);
     }
     public void setBattleGround(String homeGround){
@@ -32,6 +32,9 @@ public class Pegasus extends Mythical_Creature {
             default:
                 break;
         }
+    }
+    public void setDefaultHealth(){
+        super.setHealth(20.0);
     }
     public void attack(Character character){
 

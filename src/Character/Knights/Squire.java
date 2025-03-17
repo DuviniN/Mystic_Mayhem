@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Squire extends Knight {
     public Squire(){
-        super.setPrice(85);
+        super.setPrice(85.0);
         super.setAttack(8);
         super.setDefence(9);
-        super.setHealth(7);
+        super.setHealth(7.0);
         super.setSpeed(8);
 
     }
@@ -48,7 +48,21 @@ public class Squire extends Knight {
                 break;
         }
     }
-    public void attack(Character character){
-
+    public void setDefaultHealth(){
+        super.setHealth(7.0);
+    }
+    public void attack(Character opponent){
+        double newHealth;
+        newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+        if(newHealth<=0){
+            opponent.setHealth(0);
+            System.out.println(opponent.getClass().getSimpleName()+" died");
+            System.out.println("Squire attacks "+opponent.getClass().getSimpleName());
+        }
+        else{
+            opponent.setHealth(newHealth);
+            System.out.println("Squire attacks "+opponent.getClass().getSimpleName());
+            System.out.println(opponent.getClass().getSimpleName()+"'s new health : "+" "+newHealth);
+        }
     }
 }

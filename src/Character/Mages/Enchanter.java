@@ -2,10 +2,10 @@ package Character.Mages;
 import Character.Character;
 public class Enchanter extends Mage {
     public Enchanter(){
-        super.setPrice(160);
+        super.setPrice(160.0);
         super.setAttack(16);
         super.setDefence(10);
-        super.setHealth(13);
+        super.setHealth(13.0);
         super.setSpeed(16);
     }
     public void setBattleGround(String homeGround){
@@ -36,7 +36,21 @@ public class Enchanter extends Mage {
                 break;
         }
     }
-    public void attack(Character character){
-
+    public void setDefaultHealth(){
+        super.setHealth(13.0);
+    }
+    public void attack(Character opponent){
+        double newHealth;
+        newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+        if(newHealth<=0){
+            opponent.setHealth(0);
+            System.out.println(opponent.getClass().getSimpleName()+" died");
+            System.out.println("Enchanter attacks "+opponent.getClass().getSimpleName());
+        }
+        else{
+            opponent.setHealth(newHealth);
+            System.out.println("Enchanter attacks "+opponent.getClass().getSimpleName());
+            System.out.println(opponent.getClass().getSimpleName()+"'s new health : "+" "+newHealth);
+        }
     }
 }

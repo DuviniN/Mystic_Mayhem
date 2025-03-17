@@ -3,10 +3,10 @@ import Character.Character;
 
 public class Medic extends Healer {
     public Medic(){
-        super.setPrice(125);
+        super.setPrice(125.0);
         super.setAttack(12);
         super.setDefence(9);
-        super.setHealth(10);
+        super.setHealth(10.0);
         super.setSpeed(7);
     }
     public void setBattleGround(String homeGround){
@@ -37,7 +37,15 @@ public class Medic extends Healer {
                 break;
         }
     }
+    public void setDefaultHealth(){
+        super.setHealth(10.0);
+    }
     public void heal(Character character){
+        double newHealth;
+        newHealth=character.getHealth()+0.1*(super.getAttack());
+        character.setHealth(newHealth);
+        System.out.println("Alchemist heals "+character.getClass().getSimpleName());
+        System.out.println(character.getClass().getSimpleName()+"'s New Health:"+newHealth);
 
     }
 }

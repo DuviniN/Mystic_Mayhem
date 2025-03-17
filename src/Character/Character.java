@@ -4,10 +4,10 @@ import Equipment.Armour.Armour;
 import Equipment.Artefact.Artefact;
 
 public abstract class Character {
-    private float price;
+    private double price;
     private int attack;
     private int defence;
-    private float health;
+    private double health;
     private int speed;
     private Armour armour;
     private Artefact artefact;
@@ -15,7 +15,7 @@ public abstract class Character {
 
 
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -25,14 +25,14 @@ public abstract class Character {
     public int getDefence() {
         return defence;
     }
-    public float getHealth() {
+    public double getHealth() {
         return health;
     }
     public int getSpeed() {
         return speed;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -44,7 +44,7 @@ public abstract class Character {
         this.defence = defence;
     }
 
-    public void setHealth(float health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
@@ -72,6 +72,8 @@ public abstract class Character {
     }
     public abstract void setBattleGround(String homeGround);
     public abstract void resetBattleGround(String homeGround);
+
+    public abstract void setDefaultHealth();
 
 
 }

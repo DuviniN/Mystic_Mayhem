@@ -211,7 +211,7 @@ import Character.Healers.Healer;
 
         }
 
-        public Character getdefencer(){
+        public Character getLowestDefenceCharacter(){
             Character minDefencer= guild.get(0);
             for(int i=1;i<5;i++){
                 if(guild.get(i).getDefence()<minDefencer.getDefence()){
@@ -224,7 +224,7 @@ import Character.Healers.Healer;
             return minDefencer;
         }
 
-        public Character getFaster(){
+        public Character getFastestCharacter(){
             Character maxspeed=guild.get(0);
             for(int i=1;i<5;i++){
                 if(guild.get(i).getDefence()>maxspeed.getDefence()){
@@ -237,7 +237,7 @@ import Character.Healers.Healer;
             return maxspeed;
         }
 
-        public Character getMinHealth(){
+        public Character getLowestHealthCharacter(){
             Character minHealth=guild.get(0);
             for(int i=1;i<5;i++){
                 if(guild.get(i).getHealth()<minHealth.getHealth()){

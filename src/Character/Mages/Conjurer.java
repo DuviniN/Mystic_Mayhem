@@ -2,10 +2,10 @@ package Character.Mages;
 import Character.Character;
 public class Conjurer extends Mage {
     public Conjurer(){
-        super.setPrice(195);
+        super.setPrice(195.0);
         super.setAttack(18);
         super.setDefence(15);
-        super.setHealth(14);
+        super.setHealth(14.0);
         super.setSpeed(12);
     }
     public void setBattleGround(String homeGround){
@@ -36,7 +36,21 @@ public class Conjurer extends Mage {
                 break;
         }
     }
-    public void attack(Character character){
-
+    public void setDefaultHealth(){
+        super.setHealth(14.0);
+    }
+    public void attack(Character opponent){
+        double newHealth;
+        newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+        if(newHealth<=0){
+            opponent.setHealth(0);
+            System.out.println(opponent.getClass().getSimpleName()+" died");
+            System.out.println("Conjurer attacks "+opponent.getClass().getSimpleName());
+        }
+        else{
+            opponent.setHealth(newHealth);
+            System.out.println("Conjurer attacks "+opponent.getClass().getSimpleName());
+            System.out.println(opponent.getClass().getSimpleName()+"'s new health : "+" "+newHealth);
+        }
     }
 }
