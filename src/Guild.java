@@ -6,6 +6,7 @@ import Character.Knights.Knight;
 import Character.Mages.Mage;
 import Character.Mythical_Creatures.Mythical_Creature;
 import Character.Healers.Healer;
+import Character.CharacterState;
 
     public class Guild {
         private static final int MAX_SIZE = 5;
@@ -212,36 +213,48 @@ import Character.Healers.Healer;
         }
 
         public Character getLowestDefenceCharacter(){
-            Character minDefencer= guild.get(0);
-            for(int i=1;i<5;i++){
-                if(guild.get(i).getDefence()<minDefencer.getDefence()){
-                    minDefencer= guild.get(i);
-                }
-                else if(guild.get(i).getDefence()== minDefencer.getDefence()){
-                    minDefencer=getDefencePriority(guild.get(i),minDefencer);
+            Character minDefence=guild.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
+            for(Character c:guild){
+                assert minDefence!=null;
+                if(c.getState()!=CharacterState.DEATH && c.getDefence()<minDefence.getDefence()){
+                    minDefence=c;
                 }
             }
-            return minDefencer;
+            return minDefence;
         }
 
         public Character getFastestCharacter(){
-            Character maxspeed=guild.get(0);
-            for(int i=1;i<5;i++){
-                if(guild.get(i).getDefence()>maxspeed.getDefence()){
-                    maxspeed= guild.get(i);
-                }
-                else if(guild.get(i).getDefence()== maxspeed.getDefence()){
-                    maxspeed=getSpeedPriority(guild.get(i),maxspeed);
+            int count=0;
+            for(Character ch:guild){
+                if(ch.getState()==CharacterState.DEFENDING) {
+                    count++;
                 }
             }
-            return maxspeed;
+            if(count==0){
+                for(Character c:guild){
+                    if(c.getState()!=CharacterState.DEATH){
+                        c.setState(CharacterState.DEFENDING);
+                    }
+                }
+            }
+            Character maxSpeed=guild.stream().filter(c -> c.getState() == CharacterState.DEFENDING).findFirst().orElse(null);
+            for(Character c:guild){
+                assert maxSpeed!=null;
+                if(c.getState()==CharacterState.DEFENDING && c.getSpeed()>maxSpeed.getSpeed()) {
+                    maxSpeed = c;
+                }
+            }
+            assert maxSpeed!=null;
+            maxSpeed.setState(CharacterState.ATTACKING);
+            return maxSpeed;
         }
 
         public Character getLowestHealthCharacter(){
-            Character minHealth=guild.get(0);
-            for(int i=1;i<5;i++){
-                if(guild.get(i).getHealth()<minHealth.getHealth()){
-                    minHealth=guild.get(i);
+            Character minHealth=guild.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
+            for(Character c:guild){
+                assert minHealth!=null;
+                if(c.getState()!=CharacterState.DEATH && c.getHealth()<minHealth.getHealth()){
+                    minHealth=c;
                 }
             }
             return minHealth;

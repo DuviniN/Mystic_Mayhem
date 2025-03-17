@@ -11,6 +11,7 @@ public abstract class Character {
     private int speed;
     private Armour armour;
     private Artefact artefact;
+    private CharacterState state=CharacterState.IDLE;
 
 
 
@@ -69,6 +70,13 @@ public abstract class Character {
     }
     public boolean isArtefact(){
         return artefact!=null;
+    }
+
+    public CharacterState getState(){
+        return state;
+    }
+    public void setState(CharacterState state){
+        this.state=state;
     }
     public abstract void setBattleGround(String homeGround);
     public abstract void resetBattleGround(String homeGround);
