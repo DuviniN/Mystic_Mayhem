@@ -1,2 +1,81 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class User {
+    private String name;
+    private String username;
+    private int userId;
+    private int goldCoin;
+    private Guild guild;
+    private int xp;
+    private static int  usercount=0;
+
+    public User(String name,String username){
+        this.name=name;
+        this.username=username;
+        goldCoin=500;
+        xp=0;
+        userId=createUserId();
+        guild=new Guild();
+        usercount++;
+    }
+    private int createUserId(){
+        Date dNow=new Date();
+        SimpleDateFormat ft=new SimpleDateFormat("yyMMdd");
+        String date= ft.format(dNow);
+        String ID= date + usercount;
+        return Integer.parseInt(ID);
+    }
+
+    public String getName(){
+        return name;
+    }
+    public String getUsername(){
+        return  username;
+    }
+    public int getUserId(){
+        return userId;
+    }
+    public int getXp(){
+        return xp;
+    }
+
+    public int getGoldCoin() {
+        return goldCoin;
+    }
+
+    public Guild getGuild() {
+        return guild;
+    }
+
+    public static int getUsercount() {
+        return usercount;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setGoldCoin(int goldCoin) {
+        this.goldCoin = goldCoin;
+    }
+
+    public void setGuild(Guild guild) {
+        this.guild = guild;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
+    public static void setUsercount(int usercount) {
+        User.usercount = usercount;
+    }
 }
