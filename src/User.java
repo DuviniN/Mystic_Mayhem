@@ -47,35 +47,12 @@ public class User {
         return guild;
     }
 
-    public static int getUsercount() {
-        return usercount;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setGoldCoin(int goldCoin) {
-        this.goldCoin = goldCoin;
     }
 
     public void setGuild(Guild guild) {
         this.guild = guild;
     }
 
-    public void setXp(int xp) {
-        this.xp = xp;
-    }
-
-    public static void setUsercount(int usercount) {
-        User.usercount = usercount;
-    }
 }
