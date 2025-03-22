@@ -55,4 +55,18 @@ public class User {
         this.guild = guild;
     }
 
+    public String toString(){
+        return String.format("""
+                Name: %s
+                Gold Coin: %d
+                XP: %d
+                Archer: %s
+                Knight: %s
+                Mage: %s
+                Healer: %s
+                Mythical Creature: %s
+                """,username,goldCoin,xp,guild.getArcher().getClass().getSimpleName(),guild.getKnight().getClass().getSimpleName(),guild.getHealer().getClass().getSimpleName(),guild.getMage().getClass().getSimpleName(),guild.getMythical_Creature().getClass().getSimpleName());
+
+    }
+
 }
