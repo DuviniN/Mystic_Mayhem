@@ -1,15 +1,21 @@
 import Character.Archers.Archer;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 
 import Character.Archers.Shooter;
 import Character.Character;
+
+
+import static Character.CharacterFactory.createCharacter;
+
 public class GameController {
     private static HashMap<String,User>users=new HashMap<>();
     DisplayController displayController=new DisplayController();
     final Scanner input=new Scanner(System.in);
+
     public User login(){
-        displayController.printTTitle("Login");
+        displayController.printTitle("Login");
         while (true){
             System.out.print("Enter username:");
             String username=input.nextLine();
@@ -41,7 +47,7 @@ public class GameController {
     }
     public User register(){
 
-        displayController.printTTitle("Register");
+        displayController.printTitle("Register");
 
         System.out.print("Enter your name:");
         String name=input.nextLine();
@@ -54,7 +60,24 @@ public class GameController {
         }
         User user=new User(name,username);
         users.put(username,user);
+        createGuild(user);
+
         return user;
     }
+    public void createGuild(User user){
+        displayController.clearConsole();
+        displayController.printTitle("Create Guild\n");
+        displayController.printCharacterList();
+        String[] guild=displayController.guildSelection();
+        try{
+            for(String characterType:guild){
+                user.getGuild().addCharacter(createCharacter(characterType));
+            }
+        }
+        catch(IllegalStateException e){
+            System.out.println("Invalid character type");
+        }
+    }
+
 
 }

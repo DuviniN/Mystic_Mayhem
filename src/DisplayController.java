@@ -26,7 +26,7 @@ public class DisplayController {
         }
     }
 
-    public void printTTitle(String title){
+    public void printTitle(String title){
         int lineLength = 85;
         int titleLength=title.length();
         int padding = (lineLength - titleLength) / 2;

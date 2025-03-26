@@ -27,7 +27,7 @@ public class CharacterFactory {
             case "Conjurer" ->new Conjurer();
             case "Eldritch" ->new Eldritch();
             case "Enchanter" ->new Enchanter();
-            case "illusionist" ->new illusionist();
+            case "Illusionist" ->new Illusionist();
             case "Warlock" ->new Warlock();
             case "Basilisk" ->new Basilisk();
             case "Dragon" ->new Dragon();

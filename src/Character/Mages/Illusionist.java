@@ -1,8 +1,8 @@
 package Character.Mages;
 import Character.Character;
 
-public class illusionist extends Mage {
-    public illusionist(){
+public class Illusionist extends Mage {
+    public Illusionist(){
         super.setPrice(120.0);
         super.setAttack(13);
         super.setDefence(8);

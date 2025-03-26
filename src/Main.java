@@ -15,9 +15,8 @@ public class Main {
         else{
             displayController.clearConsole();
             user=gameControl.register();
-            displayController.printCharacterList();
-
         }
+        user.toString();
 
 
 
