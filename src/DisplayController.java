@@ -55,41 +55,41 @@ public class DisplayController {
     public void printCharacterList(){
         String[][] characters={
                 {"---Archer---","","","","",""},
-                {"Shooter","80gc","11","4","6","9"},
-                {"Ranger","115gc","14","5","8","10"},
-                {"Sunfire","160gc","15","5","7","14"},
-                {"Zing","200gc","16","9","11","14"},
-                {"Saggitarius","230gc","18","7","12","17"},
+                {"1.Shooter","80gc","11","4","6","9"},
+                {"2.Ranger","115gc","14","5","8","10"},
+                {"3.Sunfire","160gc","15","5","7","14"},
+                {"4.Zing","200gc","16","9","11","14"},
+                {"5.Saggitarius","230gc","18","7","12","17"},
 
                 {"---Knights---","","","","",""},
-                {"Squire","85gc","8","9","7","8"},
-                {"Cavalier","115gc","10","12","7","10"},
-                {"Templar","155gc","14","16","12","12"},
-                {"Zoro","180gc","17","16","13","14"},
-                {"Swiftblade","230gc","18","20","17","133"},
+                {"6.Squire","85gc","8","9","7","8"},
+                {"7.Cavalier","115gc","10","12","7","10"},
+                {"8.Templar","155gc","14","16","12","12"},
+                {"9.Zoro","180gc","17","16","13","14"},
+                {"10.Swiftblade","230gc","18","20","17","133"},
 
                 {"---Mages---","","","","",""},
-                {"Warlock","100gc","12","7","10","12"},
-                {"Illusionist","120gc","13","8","12","14"},
-                {"Enchanter","160gc","16","10","13","16"},
-                {"Conjurer","195gc","18","15","14","12"},
-                {"Eldritch","270gc","19","17","18","14"},
+                {"11.Warlock","100gc","12","7","10","12"},
+                {"12.Illusionist","120gc","13","8","12","14"},
+                {"13.Enchanter","160gc","16","10","13","16"},
+                {"14.Conjurer","195gc","18","15","14","12"},
+                {"15.Eldritch","270gc","19","17","18","14"},
 
                 {"---Healers---","","","","",""},
-                {"Soother","95gc","10","8","9","6"},
-                {"Medic","125gc","12","9","10","7"},
-                {"Alchemist","150gc","13","13","13","13"},
-                {"Saint","200gc","16","14","17","9"},
-                {"Lightbringer","260gc","17","15","19","12"},
+                {"16.Soother","95gc","10","8","9","6"},
+                {"17.Medic","125gc","12","9","10","7"},
+                {"18.Alchemist","150gc","13","13","13","13"},
+                {"19.Saint","200gc","16","14","17","9"},
+                {"20.Lightbringer","260gc","17","15","19","12"},
 
                 {"---Mythical Creature---","","","","",""},
-                {"Dragon","120gc","12","14","15","8"},
-                {"Basilisk","165gc","15","11","10","12"},
-                {"Hydra","205gc","12","16","15","11"},
-                {"Phoenix","275gc","17","13","17","29"},
-                {"Pegasus","340gc","14","18","20","20"},
+                {"21.Dragon","120gc","12","14","15","8"},
+                {"22.Basilisk","165gc","15","11","10","12"},
+                {"23.Hydra","205gc","12","16","15","11"},
+                {"24.Phoenix","275gc","17","13","17","29"},
+                {"25.Pegasus","340gc","14","18","20","20"},
         };
-        System.out.printf("   %-20s | %-20s | %-20s | %-20s | %-20s | %-20s |%n",
+        System.out.printf("  %-20s  | %-20s  | %-20s  | %-20s | %-20s | %-20s |%n",
                 "Type","Price","Attack","Defence","Health","Speed");
 
         int index=1;
@@ -106,11 +106,13 @@ public class DisplayController {
     public String[] guildSelection(){
         System.out.println("Currently you have 500 gold coins. You can choose one guild from the following:");
         System.out.println("Select your guild");
-
+        System.out.println(" ");
         System.out.println("<-Guild 1 ->");
         System.out.println("Archer: Shooter, Knight: Squire, Mage:Warlock, Healer:Soother, Mythical Creature: Dragon");
+        System.out.println();
         System.out.println("<-Guild 2 ->");
         System.out.println("Archer: Shooter, Knight: Squire, Mage: Illusionist, Healer: Soother, Mythical Creature: Dragon");
+        System.out.println();
 
         String[] guild;
         Scanner input=new Scanner(System.in);
@@ -139,5 +141,32 @@ public class DisplayController {
         }
         return guild;
     }
+    public int displayMenu(){
+        clearConsole();
+        printTitle("Menu");
+        Scanner input=new Scanner(System.in);
+        int userChoice;
+        System.out.println("1.Battle");
+        System.out.println("2.Buy Characters");
+        System.out.println("3.Sell Characters");
+        System.out.println("4.Buy Armour");
+        System.out.println("5.Buy Artefact");
+        System.out.println("6.Sell Armour");
+        System.out.println("7.Sell Artefact");
+        System.out.println("8.Exit");
+        System.out.println();
+        while(true){
+            try{
+                System.out.print("Select your choice:");
+                userChoice=input.nextInt();
+                return userChoice;
+
+            } catch (Exception e) {
+                System.out.println("Invalid input , please Enter again");
+                input.next();
+            }
+        }
+    }
+
 
 }

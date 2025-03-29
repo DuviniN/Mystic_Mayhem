@@ -88,6 +88,21 @@ import Character.CharacterState;
                 return null;
             }
         }
+        public String getArcherType(){
+            return getArcher().getClass().getSimpleName();
+        }
+        public String getHealerType(){
+            return getHealer().getClass().getSimpleName();
+        }
+        public String getKnightType(){
+            return getKnight().getClass().getSimpleName();
+        }
+        public String getMageType(){
+            return getMage().getClass().getSimpleName();
+        }
+        public String getMythicalCreatureType(){
+            return getMythical_Creature().getClass().getSimpleName();
+        }
 
 
         public void removeArcher() {
@@ -135,6 +150,7 @@ import Character.CharacterState;
                 System.out.println("No mythical creature in the guild");
             }
         }
+
        public Character getDefencePriority(Character character1,Character character2){
             if(character1 instanceof Healer){
                 return character1;

@@ -4,7 +4,7 @@ public class User {
     private String name;
     private String username;
     private int userId;
-    private int goldCoin;
+    private double goldCoin;
     private Guild guild;
     private int xp;
     private static int  usercount=0;
@@ -39,7 +39,7 @@ public class User {
         return xp;
     }
 
-    public int getGoldCoin() {
+    public double getGoldCoin() {
         return goldCoin;
     }
 
@@ -53,6 +53,10 @@ public class User {
 
     public void setGuild(Guild guild) {
         this.guild = guild;
+    }
+
+    public void setGoldCoin(double goldCoin) {
+        this.goldCoin = goldCoin;
     }
 
     public String toString(){

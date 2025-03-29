@@ -17,6 +17,7 @@ public class Main {
             user=gameControl.register();
         }
         user.toString();
+        displayController.displayMenu();
 
 
 
