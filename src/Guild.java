@@ -89,21 +89,25 @@ import Character.CharacterState;
             }
         }
         public String getArcherType(){
-            return getArcher().getClass().getSimpleName();
-        }
-        public String getHealerType(){
-            return getHealer().getClass().getSimpleName();
+            Character archer = getArcher();
+            return archer != null ? archer.getClass().getSimpleName() : "null";
         }
         public String getKnightType(){
-            return getKnight().getClass().getSimpleName();
+            Character knight = getKnight();
+            return knight != null ? knight.getClass().getSimpleName() : "null";
+        }
+        public String getHealerType(){
+            Character healer = getHealer();
+            return healer != null ? healer.getClass().getSimpleName() : "null";
         }
         public String getMageType(){
-            return getMage().getClass().getSimpleName();
+            Character mage = getMage();
+            return mage != null ? mage.getClass().getSimpleName() : "null";
         }
-        public String getMythicalCreatureType(){
-            return getMythical_Creature().getClass().getSimpleName();
+        public String getMythical_CreatureType(){
+            Character mythicalCreature = getMythical_Creature();
+            return mythicalCreature != null ? mythicalCreature.getClass().getSimpleName() : "null";
         }
-
 
         public void removeArcher() {
             if (hasArcher) {
