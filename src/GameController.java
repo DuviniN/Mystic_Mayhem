@@ -253,4 +253,26 @@ public class GameController {
             }
         }
     }
+
+    public void buyArmour(User user){
+        displayController.clearConsole();
+        displayController.printTitle("Buy Armour");
+        displayController.printArmourList();
+        System.out.println("\n4. Back");
+
+        System.out.println("\nYour Guild\n");
+        System.out.println("Archer:"+user.getGuild().getArcherType()+"\nEquipments:"+user.getGuild().getArcher().getArmour());
+        System.out.println("Knight:"+user.getGuild().getKnightType());
+        System.out.println("Mage:"+user.getGuild().getMageType());
+        System.out.println("Healer:"+user.getGuild().getHealerType());
+        System.out.println("Mythical Creature;"+user.getGuild().getMythical_CreatureType());
+        System.out.println("\nYour Gold Coin: "+user.getGoldCoin());
+        System.out.println("Select character to buy");
+
+
+    }
+
+
+
+
 }

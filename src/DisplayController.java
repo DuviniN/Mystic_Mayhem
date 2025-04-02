@@ -1,5 +1,15 @@
+import Character.Archers.Archer;
+import Character.Healers.Healer;
+import Character.Knights.Knight;
+import Character.Mages.Mage;
+import Character.Mythical_Creatures.Mythical_Creature;
+import Equipment.Armour.Armour;
+import Equipment.Armour.Chainmail;
+import Equipment.Artefact.Artefact;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import Character.Character;
 
 
 public class DisplayController {
@@ -89,7 +99,7 @@ public class DisplayController {
                 {"24.Phoenix","275gc","17","13","17","29"},
                 {"25.Pegasus","340gc","14","18","20","20"},
         };
-        System.out.printf("  %-20s  | %-20s  | %-20s  | %-20s | %-20s | %-20s |%n",
+        System.out.printf("%-20s  | %-20s  | %-20s  | %-20s | %-20s | %-20s |%n",
                 "Type","Price","Attack","Defence","Health","Speed");
 
         int index=1;
@@ -102,6 +112,41 @@ public class DisplayController {
                         index++, character[0],character[1],character[2],character[3],character[4],character[5]);
             }
         }
+    }
+    public void printArmourList(){
+
+        String[][] armour={
+                {"1.Chainmail","70","no change","-1","no change","-1"},
+                {"2,Regalia","105","no change","+1","no change","no change"},
+                {"3.Fleece","150","no change","+2","+1","-1"},
+        };
+        System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
+                "Type","Price","Attack","Defence","Health","Speed");
+        int index=1;
+        for(String[] equipment:armour){
+            System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
+                    equipment[0],equipment[1],equipment[2],equipment[3],equipment[4],equipment[5]);
+        }
+
+
+    }
+
+    public void printArtefactList(){
+
+        String[][] artefact={
+                {"1.Excalibur","150","+2","no change","no change","no change"},
+                {"2,Amulet","200","+1","-1","+1","+1"},
+                {"3.Crystal","210","+2","+1","-1","-1"},
+        };
+        System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
+                "Type","Price","Attack","Defence","Health","Speed");
+        int index=1;
+        for(String[] equipment:artefact){
+            System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
+                    equipment[0],equipment[1],equipment[2],equipment[3],equipment[4],equipment[5]);
+        }
+
+
     }
     public String[] guildSelection(){
         System.out.println("Currently you have 500 gold coins. You can choose one guild from the following:");
@@ -168,5 +213,124 @@ public class DisplayController {
         }
     }
 
+
+    public void EquipmentOfGuild(User user) {
+        clearConsole();
+        String archer;
+        String healer;
+        String mage;
+        String mythicalCreature;
+        String knight;
+
+        String archerArmour;
+        String archerArtefact;
+        String healerArmour;
+        String healerArtefact;
+        String mageArmour;
+        String mageArtefact;
+        String mythicalCreatureArmour;
+        String mythicalCreatureArtefact;
+        String knightArmour;
+        String knightArtefact;
+
+
+        if (user.getGuild().getArcher() == null) {
+            archer = null;
+            archerArmour = null;
+            archerArtefact = null;
+        }
+        else {
+            archer = user.getGuild().getHealer().getClass().getSimpleName();
+            if (user.getGuild().getHealer().isArmour()) {
+                archerArmour = user.getGuild().getHealer().getArmour().getClass().getSimpleName();
+            } else {
+                archerArmour = null;
+            }
+            if (user.getGuild().getHealer().isArtefact()) {
+                archerArtefact = user.getGuild().getHealer().getArtefact().getClass().getSimpleName();
+            } else {
+                archerArtefact= null;
+            }
+
+        }
+        if (user.getGuild().getHealer() == null) {
+            healer = null;
+            healerArmour= null;
+            healerArtefact = null;
+        } else {
+            healer = user.getGuild().getHealer().getClass().getSimpleName();
+            if (user.getGuild().getHealer().isArmour()) {
+                healerArmour = user.getGuild().getHealer().getArmour().getClass().getSimpleName();
+            } else {
+                healerArmour = null;
+            }
+            if (user.getGuild().getHealer().isArtefact()) {
+                healerArtefact = user.getGuild().getHealer().getArtefact().getClass().getSimpleName();
+            } else {
+                healerArtefact= null;
+            }
+        }
+        if (user.getGuild().getMage() == null) {
+            mage = null;
+            mageArmour= null;
+            mageArtefact = null;
+        } else {
+            mage= user.getGuild().getHealer().getClass().getSimpleName();
+            if (user.getGuild().getMage().isArmour()) {
+                mageArmour = user.getGuild().getMage().getArmour().getClass().getSimpleName();
+            } else {
+                mageArmour = null;
+            }
+            if (user.getGuild().getMage().isArtefact()) {
+                mageArtefact = user.getGuild().getMage().getArtefact().getClass().getSimpleName();
+            } else {
+                mageArtefact= null;
+            }
+        }
+        if (user.getGuild().getMythical_Creature() == null) {
+            mythicalCreature = null;
+            mythicalCreatureArmour= null;
+            mythicalCreatureArtefact = null;
+        } else {
+            mythicalCreature = user.getGuild().getHealer().getClass().getSimpleName();
+            if (user.getGuild().getMythical_Creature().isArmour()) {
+                mythicalCreatureArmour = user.getGuild().getMythical_Creature().getArmour().getClass().getSimpleName();
+            } else {
+                mythicalCreatureArmour = null;
+            }
+            if (user.getGuild().getMythical_Creature().isArtefact()) {
+                mythicalCreatureArtefact= user.getGuild().getMythical_Creature().getArtefact().getClass().getSimpleName();
+            } else {
+                mythicalCreatureArtefact= null;
+            }
+        }
+        if (user.getGuild().getKnight() == null) {
+            knight= null;
+            knightArtefact= null;
+            knightArmour = null;
+        } else {
+            knight = user.getGuild().getKnight().getClass().getSimpleName();
+            if (user.getGuild().getKnight().isArmour()) {
+                knightArmour = user.getGuild().getKnight().getArmour().getClass().getSimpleName();
+            } else {
+                knightArmour = null;
+            }
+            if (user.getGuild().getKnight().isArtefact()) {
+                knightArtefact = user.getGuild().getKnight().getArtefact().getClass().getSimpleName();
+            } else {
+                knightArtefact= null;
+            }
+        }
+        String[] characters={archer,healer,knight,mage,mythicalCreature};
+        String[] armours={archerArmour,healerArmour,knightArmour,mageArmour,mythicalCreatureArmour};
+        String[] artefacts={archerArtefact,healerArtefact,knightArtefact,mageArtefact,mythicalCreatureArtefact};
+
+        System.out.printf("%-15s | %-15s | %-15s\n\n","Character","Armour","Artefact");
+
+        for(int i=0;i<5;i++){
+            System.out.printf("%-15s | %-15s | %-15s\n",characters[i],armours[i],artefacts[i]);
+        }
+
+    }
 
 }

@@ -53,6 +53,14 @@ public abstract class Character {
         this.speed = speed;
     }
 
+    public Armour getArmour() {
+        return armour;
+    }
+
+    public Artefact getArtefact() {
+        return artefact;
+    }
+
     public void setArmour(Armour armour){
         this.armour=armour;
     }

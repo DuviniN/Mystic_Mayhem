@@ -8,9 +8,6 @@ import Character.Mythical_Creatures.*;
 
 public class CharacterFactory {
 
-    private CharacterFactory() {
-        // Prevent instantiation
-    }
 
     public static Character createCharacter(String characterType){
         return switch (characterType){

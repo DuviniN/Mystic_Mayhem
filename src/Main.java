@@ -6,6 +6,8 @@ public class Main {
         GameController gameController =new GameController();
         final Scanner input =new Scanner(System.in);
         int userChoice= displayController.loginPage();
+       displayController.printArmourList();
+
 
         User user;
         if(userChoice==1){
@@ -17,8 +19,9 @@ public class Main {
             user= gameController.register();
         }
 
+
         while (true){
-            userChoice = displayController.displayMenu();
+
             switch (userChoice){
                 case 2 -> gameController.buyCharacter(user);
                 case 3 -> gameController.sellCharacter(user);
