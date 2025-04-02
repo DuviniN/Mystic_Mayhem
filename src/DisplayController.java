@@ -215,7 +215,7 @@ public class DisplayController {
 
 
     public void EquipmentOfGuild(User user) {
-        clearConsole();
+
         String archer;
         String healer;
         String mage;
@@ -240,7 +240,7 @@ public class DisplayController {
             archerArtefact = null;
         }
         else {
-            archer = user.getGuild().getHealer().getClass().getSimpleName();
+            archer = user.getGuild().getArcher().getClass().getSimpleName();
             if (user.getGuild().getHealer().isArmour()) {
                 archerArmour = user.getGuild().getHealer().getArmour().getClass().getSimpleName();
             } else {
@@ -275,7 +275,7 @@ public class DisplayController {
             mageArmour= null;
             mageArtefact = null;
         } else {
-            mage= user.getGuild().getHealer().getClass().getSimpleName();
+            mage= user.getGuild().getMage().getClass().getSimpleName();
             if (user.getGuild().getMage().isArmour()) {
                 mageArmour = user.getGuild().getMage().getArmour().getClass().getSimpleName();
             } else {
@@ -292,7 +292,7 @@ public class DisplayController {
             mythicalCreatureArmour= null;
             mythicalCreatureArtefact = null;
         } else {
-            mythicalCreature = user.getGuild().getHealer().getClass().getSimpleName();
+            mythicalCreature = user.getGuild().getMythical_Creature().getClass().getSimpleName();
             if (user.getGuild().getMythical_Creature().isArmour()) {
                 mythicalCreatureArmour = user.getGuild().getMythical_Creature().getArmour().getClass().getSimpleName();
             } else {

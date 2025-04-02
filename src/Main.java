@@ -18,6 +18,7 @@ public class Main {
             displayController.clearConsole();
             user= gameController.register();
         }
+        displayController.EquipmentOfGuild(user);
 
 
         while (true){
@@ -26,6 +27,7 @@ public class Main {
                 case 2 -> gameController.buyCharacter(user);
                 case 3 -> gameController.sellCharacter(user);
             }
+
         }
     }
 }
