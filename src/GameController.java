@@ -263,9 +263,11 @@ public class GameController {
 
     public void buyArmour(User user){
         displayController.clearConsole();
+        displayController.printTitle("Buy Armour");
         displayController.EquipmentOfGuild(user);
+        displayController.printArmourList();
         while(true){
-            System.out.print("Enter the character:");
+            System.out.print("Enter the character[1-5]:");
             try{
                 int userChose=input.nextInt();
                 if(userChose==1){
@@ -273,12 +275,59 @@ public class GameController {
                         System.out.println("Already you Archer has Armour.");
                     }
                     else{
-                        displayController.printArmourList();
                         System.out.print("Chose Armour:");
                         int userChoseArmour=input.nextInt();
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getArcher());
                         user.getGuild().getArcher().setArmour(armour);
+                    }
+                }
+                if(userChose==2){
+                    if(user.getGuild().getHealer().isArmour()){
+                        System.out.println("Already you Healer has Armour.");
+                    }
+                    else{
+                        System.out.print("Chose Armour:");
+                        int userChoseArmour=input.nextInt();
+                        Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
+                        armour.getEquipment(user.getGuild().getHealer());
+                        user.getGuild().getHealer().setArmour(armour);
+                    }
+                }
+                if(userChose==3){
+                    if(user.getGuild().getKnight().isArmour()){
+                        System.out.println("Already you Knight has Armour.");
+                    }
+                    else{
+                        System.out.print("Chose Armour:");
+                        int userChoseArmour=input.nextInt();
+                        Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
+                        armour.getEquipment(user.getGuild().getKnight());
+                        user.getGuild().getKnight().setArmour(armour);
+                    }
+                }
+                if(userChose==4){
+                    if(user.getGuild().getMage().isArmour()){
+                        System.out.println("Already you Archer has Armour.");
+                    }
+                    else{
+                        System.out.print("Chose Armour:");
+                        int userChoseArmour=input.nextInt();
+                        Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
+                        armour.getEquipment(user.getGuild().getMage());
+                        user.getGuild().getMage().setArmour(armour);
+                    }
+                }
+                if(userChose==5){
+                    if(user.getGuild().getMythical_Creature().isArmour()){
+                        System.out.println("Already you Archer has Armour.");
+                    }
+                    else{
+                        System.out.print("Chose Armour:");
+                        int userChoseArmour=input.nextInt();
+                        Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
+                        armour.getEquipment(user.getGuild().getMythical_Creature());
+                        user.getGuild().getMythical_Creature().setArmour(armour);
                     }
                 }
 
@@ -287,9 +336,7 @@ public class GameController {
                 System.out.println("Invalid Input. Enter again.");
                 input.next();
             }
-
         }
-
     }
 
 
