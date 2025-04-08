@@ -325,10 +325,10 @@ public class DisplayController {
         String[] armours={archerArmour,healerArmour,knightArmour,mageArmour,mythicalCreatureArmour};
         String[] artefacts={archerArtefact,healerArtefact,knightArtefact,mageArtefact,mythicalCreatureArtefact};
 
-        System.out.printf("%-15s | %-15s | %-15s\n\n","Character","Armour","Artefact");
+        System.out.printf("   %-15s | %-15s | %-15s\n\n","Character","Armour","Artefact");
 
         for(int i=0;i<5;i++){
-            System.out.printf("%-15s | %-15s | %-15s\n",characters[i],armours[i],artefacts[i]);
+            System.out.printf("%d   %-15s | %-15s | %-15s\n",i+1,characters[i],armours[i],artefacts[i]);
         }
 
     }

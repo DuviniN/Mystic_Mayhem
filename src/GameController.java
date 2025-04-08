@@ -1,7 +1,14 @@
 import java.util.*;
+
+import Character.Archers.Archer;
 import Character.Character;
 import  java.util.HashMap;
 import Character.CharacterFactory;
+import Equipment.Armour.Armour;
+import Equipment.Armour.Chainmail;
+import Equipment.Armour.Regalia;
+import Equipment.Equipment;
+import Equipment.EquipmentFactory;
 
 public class GameController {
     private static HashMap<String,User>users=new HashMap<>();
@@ -256,19 +263,32 @@ public class GameController {
 
     public void buyArmour(User user){
         displayController.clearConsole();
-        displayController.printTitle("Buy Armour");
-        displayController.printArmourList();
-        System.out.println("\n4. Back");
+        displayController.EquipmentOfGuild(user);
+        while(true){
+            System.out.print("Enter the character:");
+            try{
+                int userChose=input.nextInt();
+                if(userChose==1){
+                    if(user.getGuild().getArcher().isArmour()){
+                        System.out.println("Already you Archer has Armour.");
+                    }
+                    else{
+                        displayController.printArmourList();
+                        System.out.print("Chose Armour:");
+                        int userChoseArmour=input.nextInt();
+                        Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
+                        armour.getEquipment(user.getGuild().getArcher());
+                        user.getGuild().getArcher().setArmour(armour);
+                    }
+                }
 
-        System.out.println("\nYour Guild\n");
-        System.out.println("Archer:"+user.getGuild().getArcherType()+"\nEquipments:"+user.getGuild().getArcher().getArmour());
-        System.out.println("Knight:"+user.getGuild().getKnightType());
-        System.out.println("Mage:"+user.getGuild().getMageType());
-        System.out.println("Healer:"+user.getGuild().getHealerType());
-        System.out.println("Mythical Creature;"+user.getGuild().getMythical_CreatureType());
-        System.out.println("\nYour Gold Coin: "+user.getGoldCoin());
-        System.out.println("Select character to buy");
+            }
+            catch (Exception e){
+                System.out.println("Invalid Input. Enter again.");
+                input.next();
+            }
 
+        }
 
     }
 
