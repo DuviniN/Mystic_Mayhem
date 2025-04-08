@@ -265,7 +265,10 @@ public class GameController {
         displayController.clearConsole();
         displayController.printTitle("Buy Armour");
         displayController.EquipmentOfGuild(user);
+        System.out.println("6.back");
+        System.out.println(" ");
         displayController.printArmourList();
+        System.out.println(" ");
         while(true){
             System.out.print("Enter the character[1-5]:");
             try{
@@ -280,6 +283,7 @@ public class GameController {
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getArcher());
                         user.getGuild().getArcher().setArmour(armour);
+                        System.out.println("Successfully you have bought Armour");
                     }
                 }
                 if(userChose==2){
@@ -292,6 +296,7 @@ public class GameController {
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getHealer());
                         user.getGuild().getHealer().setArmour(armour);
+                        System.out.println("Successfully you have bought Armour");
                     }
                 }
                 if(userChose==3){
@@ -304,6 +309,7 @@ public class GameController {
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getKnight());
                         user.getGuild().getKnight().setArmour(armour);
+                        System.out.println("Successfully you have bought Armour");
                     }
                 }
                 if(userChose==4){
@@ -316,6 +322,7 @@ public class GameController {
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getMage());
                         user.getGuild().getMage().setArmour(armour);
+                        System.out.println("Successfully you have bought Armour");
                     }
                 }
                 if(userChose==5){
@@ -328,7 +335,11 @@ public class GameController {
                         Armour armour=(Armour)EquipmentFactory.createEquipment(userChoseArmour);
                         armour.getEquipment(user.getGuild().getMythical_Creature());
                         user.getGuild().getMythical_Creature().setArmour(armour);
+                        System.out.println("Successfully you have bought Armour");
                     }
+                }
+                else{
+                    displayController.displayMenu();
                 }
 
             }

@@ -19,6 +19,7 @@ public class Main {
             user= gameController.register();
         }
         displayController.EquipmentOfGuild(user);
+        gameController.buyArmour(user);
 
 
         while (true){
