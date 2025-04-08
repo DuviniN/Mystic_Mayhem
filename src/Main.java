@@ -20,6 +20,7 @@ public class Main {
         }
         displayController.EquipmentOfGuild(user);
         gameController.buyArmour(user);
+        displayController.EquipmentOfGuild(user);
 
 
         while (true){
