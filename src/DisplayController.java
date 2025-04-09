@@ -241,13 +241,13 @@ public class DisplayController {
         }
         else {
             archer = user.getGuild().getArcher().getClass().getSimpleName();
-            if (user.getGuild().getHealer().isArmour()) {
-                archerArmour = user.getGuild().getHealer().getArmour().getClass().getSimpleName();
+            if (user.getGuild().getArcher().isArmour()) {
+                archerArmour = user.getGuild().getArcher().getArmour().getClass().getSimpleName();
             } else {
                 archerArmour = null;
             }
-            if (user.getGuild().getHealer().isArtefact()) {
-                archerArtefact = user.getGuild().getHealer().getArtefact().getClass().getSimpleName();
+            if (user.getGuild().getArcher().isArtefact()) {
+                archerArtefact = user.getGuild().getArcher().getArtefact().getClass().getSimpleName();
             } else {
                 archerArtefact= null;
             }

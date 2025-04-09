@@ -7,6 +7,7 @@ import Character.CharacterFactory;
 import Equipment.Armour.Armour;
 import Equipment.Armour.Chainmail;
 import Equipment.Armour.Regalia;
+import Equipment.Artefact.Artefact;
 import Equipment.Equipment;
 import Equipment.EquipmentFactory;
 
@@ -287,6 +288,7 @@ public class GameController {
                             user.getGuild().getArcher().setArmour(armour);
                             System.out.println("Successfully you have bought Armour to Archer");
                             user.setGoldCoin(user.getGoldCoin()-price);
+
                         }
                         else{
                             System.out.println("You don't have enough gold coins");
@@ -373,7 +375,130 @@ public class GameController {
                         }
                     }
                 }
-                else{
+                if(userChose==6){
+                    return;
+                }
+            }
+            catch (Exception e){
+                System.out.println("Invalid Input. Enter again.");
+                input.next();
+            }
+        }
+    }
+    public void buyArtefact(User user){
+        displayController.clearConsole();
+        displayController.printTitle("Buy Artefact");
+        displayController.EquipmentOfGuild(user);
+        System.out.println("6.back");
+        System.out.println(" ");
+        displayController.printArtefactList();
+        System.out.println(" ");
+        while(true){
+            System.out.print("Enter the character[1-6]:");
+            try{
+                int userChose=input.nextInt();
+                if(userChose==1){
+                    if(user.getGuild().getArcher().isArtefact()){
+                        System.out.println("Already you Archer has Artefact.");
+                    }
+                    else{
+                        System.out.print("Choose Artefact:");
+                        int userChoseArtefact=input.nextInt();
+                        double price=EquipmentFactory.getEquipmentPrice(userChoseArtefact);
+                        if(user.getGoldCoin()>=price){
+                            Artefact artefact=(Artefact) EquipmentFactory.createEquipment(userChoseArtefact);
+                            artefact.getEquipment(user.getGuild().getArcher());
+                            user.getGuild().getArcher().setArtefact(artefact);
+                            System.out.println("Successfully you have bought Artefact to Archer");
+                            user.setGoldCoin(user.getGoldCoin()-price);
+
+                        }
+                        else{
+                            System.out.println("You don't have enough gold coins");
+                        }
+                    }
+                }
+                if(userChose==2){
+                    if(user.getGuild().getHealer().isArtefact()){
+                        System.out.println("Already you Healer has Artefact.");
+                    }
+                    else{
+                        System.out.print("Choose Artefact:");
+                        int userChoseArtefact=input.nextInt();
+                        double price=EquipmentFactory.getEquipmentPrice(userChoseArtefact);
+                        if(user.getGoldCoin()>=price){
+                            Artefact artefact=(Artefact) EquipmentFactory.createEquipment(userChoseArtefact);
+                            artefact.getEquipment(user.getGuild().getHealer());
+                            user.getGuild().getHealer().setArtefact(artefact);
+                            System.out.println("Successfully you have bought Artefact to Healer");
+                            user.setGoldCoin(user.getGoldCoin()-price);
+                        }
+                        else{
+                            System.out.println("You don't have enough gold coins");
+                        }
+                    }
+                }
+                if(userChose==3){
+                    if(user.getGuild().getKnight().isArtefact()){
+                        System.out.println("Already you Knight has Artefact.");
+                    }
+                    else{
+                        System.out.print("Choose Artefact:");
+                        int userChoseArtefact=input.nextInt();
+                        double price=EquipmentFactory.getEquipmentPrice(userChoseArtefact);
+                        if(user.getGoldCoin()>=price){
+                            Artefact artefact=(Artefact) EquipmentFactory.createEquipment(userChoseArtefact);
+                            artefact.getEquipment(user.getGuild().getKnight());
+                            user.getGuild().getKnight().setArtefact(artefact);
+                            System.out.println("Successfully you have bought Artefact to Knight");
+                            user.setGoldCoin(user.getGoldCoin()-price);
+                        }
+                        else{
+                            System.out.println("You don't have enough gold coins");
+                        }
+                    }
+                }
+                if(userChose==4){
+                    if(user.getGuild().getMage().isArtefact()){
+                        System.out.println("Already you Archer has Artefact.");
+                    }
+                    else{
+                        System.out.print("Choose Artefact:");
+                        int userChoseArtefact=input.nextInt();
+                        double price=EquipmentFactory.getEquipmentPrice(userChoseArtefact);
+                        if(user.getGoldCoin()>=price){
+                            Artefact artefact=(Artefact)EquipmentFactory.createEquipment(userChoseArtefact);
+                            artefact.getEquipment(user.getGuild().getMage());
+                            user.getGuild().getMage().setArtefact(artefact);
+                            System.out.println("Successfully you have bought Artefact to Mage");
+                            user.setGoldCoin(user.getGoldCoin()-price);
+                        }
+                        else{
+                            System.out.println("You don't have enough gold coins");
+                        }
+                    }
+                }
+                if(userChose==5){
+                    if(user.getGuild().getMythical_Creature().isArtefact()){
+                        System.out.println("Already you Archer has Artefact.");
+                    }
+                    else{
+                        System.out.print("Choose Artefact:");
+                        int userChoseArtefact=input.nextInt();
+                        double price=EquipmentFactory.getEquipmentPrice(userChoseArtefact);
+                        if(user.getGoldCoin()>=price){
+                            Artefact artefact=(Artefact) EquipmentFactory.createEquipment(userChoseArtefact);
+                            artefact.getEquipment(user.getGuild().getMythical_Creature());
+                            user.getGuild().getMythical_Creature().setArtefact(artefact);
+                            System.out.println("Successfully you have bought Artefact to Mythical Creature");
+                            user.setGoldCoin(user.getGoldCoin()-price);
+                        }
+                        else{
+                            System.out.println("You don't have enough gold coins");
+                        }
+                    }
+                }
+                if(userChose==6){
                     return;
                 }
             }
@@ -384,7 +509,145 @@ public class GameController {
         }
     }
 
-
-
-
+    public void sellArmour(User user){
+        displayController.clearConsole();
+        displayController.printTitle("Sell Armour");
+        if(user.getGoldCoin() <= 50){
+            System.out.println("\nYou don't have enough gold coins to sell.");
+            System.out.println("You need at least 50 gold coins to sell.");
+            System.out.println("\nPress any key to go back to the menu.");
+            input.nextLine();
+        }
+        else {
+            System.out.println("\nYour Gold Coin: " + user.getGoldCoin());
+            System.out.println("\nYour Guild");
+            System.out.println("1.Archer: " + user.getGuild().getArcherType());
+            System.out.println("2.Healer: " + user.getGuild().getHealerType());
+            System.out.println("3.Knight: " + user.getGuild().getKnightType());
+            System.out.println("4.Mage: " + user.getGuild().getMageType());
+            System.out.println("5.Mythical Creature: " + user.getGuild().getMythical_CreatureType());
+            System.out.println("6.Back");
+            System.out.println("\nSelect character to sell");
+            while (true) {
+                System.out.print("Enter[1-6]: ");
+                try {
+                    int userInput = input.nextInt();
+                    if (userInput == 1) {
+                        if (user.getGuild().getArcher().isArmour()) {
+                            System.out.println("You have sold your archer's armour");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getArcher().getArmour().getPrice());
+                            user.getGuild().getArcher().removeArmour();
+                        } else {
+                            System.out.println("You don't have archer's armour");
+                        }
+                    } else if (userInput == 2) {
+                        if (user.getGuild().getHealer().isArmour()) {
+                            System.out.println("You have sold your healer's armour");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getHealer().getArmour().getPrice());
+                            user.getGuild().getHealer().removeArmour();
+                        } else {
+                            System.out.println("You don't have healer's armour");
+                        }
+                    } else if (userInput == 3) {
+                        if (user.getGuild().getKnight().isArmour()) {
+                            System.out.println("You have sold your knight's armour");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getKnight().getArmour().getPrice());
+                            user.getGuild().getKnight().removeArmour();
+                        } else {
+                            System.out.println("You don't have knight's armour");
+                        }
+                    } else if (userInput == 4) {
+                        if (user.getGuild().getMage().isArmour()) {
+                            System.out.println("You have sold your healer's armour");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getMage().getArmour().getPrice());
+                            user.getGuild().getMage().removeArmour();
+                        } else {
+                            System.out.println("You don't have mage's armour");
+                        }
+                    } else if (userInput == 5) {
+                        if (user.getGuild().getMythical_Creature().isArmour()) {
+                            System.out.println("You have sold your mythical creature's armour");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getMythical_Creature().getArmour().getPrice());
+                            user.getGuild().getMythical_Creature().removeArmour();
+                        } else {
+                            System.out.println("You don't have mythical creature's armour");
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input, please enter again");
+                    input.next();
+                }
+            }
+        }
+    }
+    public void sellArtefact(User user) {
+        displayController.clearConsole();
+        displayController.printTitle("Sell Artefact");
+        if (user.getGoldCoin() <= 50) {
+            System.out.println("\nYou don't have enough gold coins to sell.");
+            System.out.println("You need at least 50 gold coins to sell.");
+            System.out.println("\nPress any key to go back to the menu.");
+            input.nextLine();
+        } else {
+            System.out.println("\nYour Gold Coin: " + user.getGoldCoin());
+            System.out.println("\nYour Guild");
+            System.out.println("1.Archer: " + user.getGuild().getArcherType());
+            System.out.println("2.Healer: " + user.getGuild().getHealerType());
+            System.out.println("3.Knight: " + user.getGuild().getKnightType());
+            System.out.println("4.Mage: " + user.getGuild().getMageType());
+            System.out.println("5.Mythical Creature: " + user.getGuild().getMythical_CreatureType());
+            System.out.println("6.Back");
+            System.out.println("\nSelect character to sell");
+            while (true) {
+                System.out.print("Enter[1-6]: ");
+                try {
+                    int userInput = input.nextInt();
+                    if (userInput == 1) {
+                        if (user.getGuild().getArcher().isArtefact()) {
+                            System.out.println("You have sold your archer's artefact");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getArcher().getArtefact().getPrice());
+                            user.getGuild().getArcher().removeArtefact();
+                        } else {
+                            System.out.println("You don't have archer's artefact");
+                        }
+                    } else if (userInput == 2) {
+                        if (user.getGuild().getHealer().isArtefact()) {
+                            System.out.println("You have sold your healer's artefact");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getHealer().getArtefact().getPrice());
+                            user.getGuild().getHealer().removeArtefact();
+                        } else {
+                            System.out.println("You don't have healer's artefact");
+                        }
+                    } else if (userInput == 3) {
+                        if (user.getGuild().getKnight().isArtefact()) {
+                            System.out.println("You have sold your knight's artefact");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getKnight().getArtefact().getPrice());
+                            user.getGuild().getKnight().removeArtefact();
+                        } else {
+                            System.out.println("You don't have knight's artefact");
+                        }
+                    } else if (userInput == 4) {
+                        if (user.getGuild().getMage().isArtefact()) {
+                            System.out.println("You have sold your mage's artefact");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getMage().getArtefact().getPrice());
+                            user.getGuild().getMage().removeArtefact();
+                        } else {
+                            System.out.println("You don't have healer's artefact");
+                        }
+                    } else if (userInput == 5) {
+                        if (user.getGuild().getMythical_Creature().isArtefact()) {
+                            System.out.println("You have sold your mythical creature's artefact");
+                            user.setGoldCoin(user.getGoldCoin() + user.getGuild().getMythical_Creature().getArtefact().getPrice());
+                            user.getGuild().getMythical_Creature().removeArtefact();
+                        } else {
+                            System.out.println("You don't have mythical creature's artefact");
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input, please enter again");
+                    input.next();
+                }
+            }
+        }
+    }
 }

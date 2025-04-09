@@ -62,7 +62,7 @@ public class User {
     public String toString(){
         return String.format("""
                 Name: %s
-                Gold Coin: %d
+                Gold Coin: %.2f
                 XP: %d
                 Archer: %s
                 Knight: %s
