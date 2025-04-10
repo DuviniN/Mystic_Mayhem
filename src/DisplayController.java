@@ -99,19 +99,20 @@ public class DisplayController {
                 {"24.Phoenix","275gc","17","13","17","29"},
                 {"25.Pegasus","340gc","14","18","20","20"},
         };
-        System.out.printf("%-20s  | %-20s  | %-20s  | %-20s | %-20s | %-20s |%n",
+        System.out.printf("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s |%n",
                 "Type","Price","Attack","Defence","Health","Speed");
 
-        int index=1;
+
         for(String[] character: characters){
             if(character[1].isEmpty()){
                 System.out.printf("%n%s%n",character[0]);
             }
             else{
-                System.out.printf("%-2d | %-20s | %-20s | %-20s | %-20s | %-20s | %-20s |%n",
-                        index++, character[0],character[1],character[2],character[3],character[4],character[5]);
+                System.out.printf("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s |%n",
+                         character[0],character[1],character[2],character[3],character[4],character[5]);
             }
         }
+
     }
     public void printArmourList(){
 
@@ -127,6 +128,7 @@ public class DisplayController {
             System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
                     equipment[0],equipment[1],equipment[2],equipment[3],equipment[4],equipment[5]);
         }
+        System.out.println("\n\n");
 
 
     }
@@ -145,13 +147,13 @@ public class DisplayController {
             System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
                     equipment[0],equipment[1],equipment[2],equipment[3],equipment[4],equipment[5]);
         }
+        System.out.println("\n\n");
 
 
     }
     public String[] guildSelection(){
-        System.out.println("Currently you have 500 gold coins. You can choose one guild from the following:");
-        System.out.println("Select your guild");
-        System.out.println(" ");
+        System.out.println("\nCurrently you have 500 gold coins. You can choose one guild from the following:\n");
+        System.out.println("Select your guild\n");
         System.out.println("<-Guild 1 ->");
         System.out.println("Archer: Shooter, Knight: Squire, Mage:Warlock, Healer:Soother, Mythical Creature: Dragon");
         System.out.println();
@@ -163,7 +165,7 @@ public class DisplayController {
         Scanner input=new Scanner(System.in);
         while (true){
             try {
-                System.out.println("Select 1 or 2:");
+                System.out.print("Select 1 or 2:");
                 int choice = input.nextInt();
                 if(choice==1){
                     guild=new String[]{"Shooter","Squire","Warlock","Soother","Dragon"};

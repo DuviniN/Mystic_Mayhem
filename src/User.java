@@ -12,7 +12,7 @@ public class User {
     public User(String name,String username){
         this.name=name;
         this.username=username;
-        goldCoin=500;
+        goldCoin=3000;
         xp=0;
         userId=createUserId();
         guild=new Guild();

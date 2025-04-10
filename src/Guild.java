@@ -119,36 +119,36 @@ import Character.CharacterState;
             }
         }
         public void removeHealer() {
-            if (hasArcher) {
+            if (hasHealer) {
                 guild.removeIf(character -> character instanceof Healer);
-                hasArcher = false;
+                hasHealer = false;
                 System.out.println("Healer removed");
             } else {
                 System.out.println("No healer in the guild");
             }
         }
         public void removeKnight() {
-            if (hasArcher) {
+            if (hasKnight) {
                 guild.removeIf(character -> character instanceof Knight);
-                hasArcher = false;
+                hasKnight = false;
                 System.out.println("Knight removed");
             } else {
                 System.out.println("No knight in the guild");
             }
         }
         public void removeMage() {
-            if (hasArcher) {
+            if (hasMage) {
                 guild.removeIf(character -> character instanceof Mage);
-                hasArcher = false;
+                hasMage = false;
                 System.out.println("Mage removed");
             } else {
                 System.out.println("No mage in the guild");
             }
         }
         public void removeMythical_Creatures() {
-            if (hasArcher) {
+            if (hasMythicalCreature) {
                 guild.removeIf(character -> character instanceof Mythical_Creature);
-                hasArcher = false;
+                hasMythicalCreature = false;
                 System.out.println("Mythical Creature removed");
             } else {
                 System.out.println("No mythical creature in the guild");
