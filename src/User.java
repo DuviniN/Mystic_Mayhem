@@ -38,6 +38,9 @@ public class User {
     public int getXp(){
         return xp;
     }
+    public void setXp(int xp){
+        this.xp=xp;
+    }
 
     public double getGoldCoin() {
         return goldCoin;

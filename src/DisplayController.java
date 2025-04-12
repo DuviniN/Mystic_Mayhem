@@ -7,6 +7,7 @@ import Equipment.Armour.Armour;
 import Equipment.Armour.Chainmail;
 import Equipment.Artefact.Artefact;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import Character.Character;
@@ -123,7 +124,7 @@ public class DisplayController {
         };
         System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
                 "Type","Price","Attack","Defence","Health","Speed");
-        int index=1;
+
         for(String[] equipment:armour){
             System.out.printf(" %-15s  | %-12s  | %-15s  | %-12s  | %-15s  | %-15s  |%n",
                     equipment[0],equipment[1],equipment[2],equipment[3],equipment[4],equipment[5]);
@@ -331,6 +332,50 @@ public class DisplayController {
 
         for(int i=0;i<5;i++){
             System.out.printf("%d   %-15s | %-15s | %-15s\n",i+1,characters[i],armours[i],artefacts[i]);
+        }
+
+    }
+
+    public void displayHomeGround(){
+        System.out.println("1.Hillcrest");
+        System.out.println("2.Marshland");
+        System.out.println("3.Desert");
+        System.out.println("4.Arcane");
+    }
+    public User selectUser(HashMap <String,User> user){
+        User[] users=new User[3];
+        int indexes=0;
+        for(User userEnermy:user.values()){
+            users[indexes]=userEnermy;
+            indexes++;
+        }
+        System.out.println("Select the user you want to battle with");
+
+        System.out.printf("%-20s | %-20s | %-20s | %-20s|%n","No","User","GoldCoin","XP");
+        int index=1;
+        for(User userchose:users){
+            System.out.printf("%-20d | %-20s | %-20.2f | %-20d|%n",index,userchose.getUsername(),userchose.getGoldCoin(),userchose.getXp());
+            index++;
+        }
+        while(true){
+            System.out.println("Select enermy:");
+            Scanner input = new Scanner(System.in);
+            try{
+                int userInput=input.nextInt();
+                if(userInput==1){
+                   return users[0];
+                }
+                else if(userInput==2){
+                    return users[1];
+                }
+                else if(userInput==3){
+                    return users[2];
+                }
+                            }
+            catch (Exception e){
+                System.out.println("Invalid input. Enter again");
+                input.next();
+            }
         }
 
     }

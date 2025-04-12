@@ -6,8 +6,10 @@ import  java.util.HashMap;
 import Character.CharacterFactory;
 import Equipment.Armour.Armour;
 import Equipment.Armour.Chainmail;
+import Equipment.Armour.Fleece;
 import Equipment.Armour.Regalia;
 import Equipment.Artefact.Artefact;
+import Equipment.Artefact.Crystal;
 import Equipment.Equipment;
 import Equipment.EquipmentFactory;
 
@@ -15,6 +17,65 @@ public class GameController {
     private static HashMap<String,User>users=new HashMap<>();
     DisplayController displayController=new DisplayController();
     final Scanner input=new Scanner(System.in);
+
+    public GameController(){
+        users=fetchUsers();
+    }
+
+    private HashMap<String, User>fetchUsers(){
+        HashMap<String, User> userList=new HashMap<>();
+        User user1=new User("Harvey","harvey123");
+        user1.setGoldCoin(2340);
+        user1.setXp(32);
+        user1.getGuild().addCharacter(CharacterFactory.createCharacter(1));
+        user1.getGuild().addCharacter(CharacterFactory.createCharacter(7));
+        user1.getGuild().addCharacter(CharacterFactory.createCharacter(13));
+        user1.getGuild().addCharacter(CharacterFactory.createCharacter(16));
+        user1.getGuild().addCharacter(CharacterFactory.createCharacter(23));
+        Armour armour1=new Regalia();
+        armour1.getEquipment(user1.getGuild().getArcher());
+        user1.getGuild().getArcher().setArmour(armour1);
+        Artefact artefact1=new Crystal();
+        artefact1.getEquipment(user1.getGuild().getArcher());
+        user1.getGuild().getArcher().setArtefact(artefact1);
+        userList.put(user1.getUsername(),user1);
+
+        User user2=new User("Jonny","Jonny123");
+        user2.setGoldCoin(2330);
+        user2.setXp(31);
+        user2.getGuild().addCharacter(CharacterFactory.createCharacter(2));
+        user2.getGuild().addCharacter(CharacterFactory.createCharacter(8));
+        user2.getGuild().addCharacter(CharacterFactory.createCharacter(14));
+        user2.getGuild().addCharacter(CharacterFactory.createCharacter(17));
+        user2.getGuild().addCharacter(CharacterFactory.createCharacter(24));
+        Armour armour2=new Fleece();
+        armour2.getEquipment(user1.getGuild().getArcher());
+        user2.getGuild().getArcher().setArmour(armour2);
+        Artefact artefact2=new Crystal();
+        artefact2.getEquipment(user2.getGuild().getArcher());
+        user2.getGuild().getArcher().setArtefact(artefact2);
+        userList.put(user2.getUsername(),user2);
+
+        User user3=new User("Nory","Nory123");
+        user3.setGoldCoin(2345);
+        user3.setXp(32);
+        user3.getGuild().addCharacter(CharacterFactory.createCharacter(3));
+        user3.getGuild().addCharacter(CharacterFactory.createCharacter(9));
+        user3.getGuild().addCharacter(CharacterFactory.createCharacter(15));
+        user3.getGuild().addCharacter(CharacterFactory.createCharacter(18));
+        user3.getGuild().addCharacter(CharacterFactory.createCharacter(25));
+        Armour armour3=new Regalia();
+        armour3.getEquipment(user1.getGuild().getArcher());
+        user3.getGuild().getArcher().setArmour(armour3);
+        Artefact artefact3=new Crystal();
+        artefact3.getEquipment(user3.getGuild().getArcher());
+        user3.getGuild().getArcher().setArtefact(artefact3);
+
+        userList.put(user3.getUsername(),user3);
+
+
+        return userList;
+    }
 
     public User login(){
         displayController.clearConsole();
@@ -68,6 +129,7 @@ public class GameController {
 
         return user;
     }
+
     public void createGuild(User user){
         displayController.clearConsole();
         displayController.printCharacterList();
@@ -166,7 +228,6 @@ public class GameController {
             }
         }
     }
-
     public void buyCharacter(User user){
         displayController.clearConsole();
         displayController.printTitle("Buy Character");
@@ -514,7 +575,6 @@ public class GameController {
         }
     }
 
-
     public void sellArmour(User user){
         displayController.clearConsole();
         displayController.printTitle("Sell Armour");
@@ -654,4 +714,36 @@ public class GameController {
             }
         }
     }
+
+    public void battle(User user1,User user2){
+        displayController.clearConsole();
+        displayController.printTitle("Battle");
+        System.out.println("Your Guild");
+        System.out.println(user1.getGuild().getArcherType());
+        System.out.println(user1.getGuild().getKnightType());
+        System.out.println(user1.getGuild().getMageType());
+        System.out.println(user1.getGuild().getHealerType());
+        System.out.println(user1.getGuild().getMythical_CreatureType());
+        System.out.println("\nYour Equipments");
+        displayController.EquipmentOfGuild(user1);
+
+        User enermy=displayController.selectUser(fetchUsers());
+        System.out.println("\nEnemy Guild");
+        System.out.println(enermy.getGuild().getArcherType());
+        System.out.println(enermy.getGuild().getKnightType());
+        System.out.println(enermy.getGuild().getMageType());
+        System.out.println(enermy.getGuild().getHealerType());
+        System.out.println(enermy.getGuild().getMythical_CreatureType());
+        System.out.println("\nEnermy Equipments");
+        displayController.EquipmentOfGuild(enermy);
+
+
+
+
+
+
+        // Battle logic goes here
+    }
+
+
 }

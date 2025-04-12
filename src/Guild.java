@@ -61,28 +61,28 @@ import Character.CharacterState;
             }
         }
         public Character getHealer() {
-            if(hasArcher) {
+            if(hasHealer) {
                 return guild.stream().filter(character -> character instanceof Healer).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getKnight() {
-            if(hasArcher) {
+            if(hasKnight) {
                 return guild.stream().filter(character -> character instanceof Knight).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getMage() {
-            if(hasArcher) {
+            if(hasMage) {
                 return guild.stream().filter(character -> character instanceof Mage).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getMythical_Creature() {
-            if(hasArcher) {
+            if(hasMythicalCreature) {
                 return guild.stream().filter(character -> character instanceof Mythical_Creature).findFirst().orElse(null);
             } else {
                 return null;
