@@ -1,5 +1,6 @@
 package Character.Knights;
 import Character.Character;
+import Character.CharacterState;
 
 public class Templar extends Knight {
     public Templar(){
@@ -47,6 +48,7 @@ public class Templar extends Knight {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Templar attacks "+opponent.getClass().getSimpleName());
         }

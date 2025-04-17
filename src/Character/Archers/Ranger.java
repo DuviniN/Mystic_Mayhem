@@ -1,6 +1,6 @@
 package Character.Archers;
 import Character.Character;
-import java.lang.Class;
+import Character.CharacterState;
 
 
 public class Ranger extends Archer {
@@ -50,6 +50,7 @@ public class Ranger extends Archer {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Ranger attacks "+opponent.getClass().getSimpleName());
         }

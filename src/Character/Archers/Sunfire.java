@@ -2,6 +2,7 @@ package Character.Archers;
 
 import Character.Archers.Archer;
 import Character.Character;
+import Character.CharacterState;
 
 public class Sunfire extends Archer {
     public Sunfire(){
@@ -49,6 +50,7 @@ public class Sunfire extends Archer {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Sunfire attacks "+opponent.getClass().getSimpleName());
         }

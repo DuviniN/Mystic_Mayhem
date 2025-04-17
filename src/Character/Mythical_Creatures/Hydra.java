@@ -1,5 +1,6 @@
 package Character.Mythical_Creatures;
 import Character.Character;
+import Character.CharacterState;
 
 public class Hydra extends Mythical_Creature {
     public Hydra(){
@@ -55,6 +56,7 @@ public class Hydra extends Mythical_Creature {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Hydra attacks "+opponent.getClass().getSimpleName());
         }

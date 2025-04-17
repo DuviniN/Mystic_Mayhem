@@ -1,5 +1,6 @@
 package Character.Mages;
 import Character.Character;
+import Character.CharacterState;
 public class Conjurer extends Mage {
     public Conjurer(){
         super.setPrice(195.0);
@@ -44,6 +45,7 @@ public class Conjurer extends Mage {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Conjurer attacks "+opponent.getClass().getSimpleName());
         }

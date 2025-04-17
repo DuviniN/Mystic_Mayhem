@@ -1,9 +1,14 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 import Character.Archers.Archer;
 import Character.Character;
 import  java.util.HashMap;
 import Character.CharacterFactory;
+import Character.Healers.Healer;
+import Character.Knights.Knight;
+import Character.Mages.Mage;
+import Character.Mythical_Creatures.Mythical_Creature;
 import Equipment.Armour.Armour;
 import Equipment.Armour.Chainmail;
 import Equipment.Armour.Fleece;
@@ -12,6 +17,7 @@ import Equipment.Artefact.Artefact;
 import Equipment.Artefact.Crystal;
 import Equipment.Equipment;
 import Equipment.EquipmentFactory;
+import Character.CharacterState;
 
 public class GameController {
     private static HashMap<String,User>users=new HashMap<>();
@@ -715,35 +721,134 @@ public class GameController {
         }
     }
 
-    public void battle(User user1,User user2){
+    public void selectWinner(User user,User enemy,String battleGround){
+        int userCharacterDeath=0;
+        int enemyCharacterDeath=0;
+
+        for(Character c: user.getGuild().getGuildList()){
+            if(c.getState()== CharacterState.DEATH){
+                userCharacterDeath++;
+            }
+        }
+        for(Character c: enemy.getGuild().getGuildList()){
+            if(c.getState()== CharacterState.DEATH){
+                enemyCharacterDeath++;
+            }
+        }
+
+        if(userCharacterDeath==5){
+            System.out.println("You have lost the battle.");
+            System.out.println("Your all characters are dead.");
+            enemy.setGoldCoin(enemy.getGoldCoin()+user.getGoldCoin()*0.1);
+            user.setGoldCoin(user.getGoldCoin()*0.9);
+            enemy.setXp(enemy.getXp()+1);
+        }
+        else if(enemyCharacterDeath==5){
+            System.out.println("You have win the battle.");
+            user.setGoldCoin(user.getGoldCoin()+enemy.getGoldCoin()*0.1);
+            enemy.setGoldCoin(enemy.getGoldCoin()*0.9);
+            user.setXp(user.getXp()+1);
+        }
+        else{
+            System.out.println("The battle is a draw.");
+        }
+        for(Character c:user.getGuild().getGuildList()){
+            c.resetBattleGround(battleGround);
+            c.setDefaultHealth();
+        }
+        for(Character c:enemy.getGuild().getGuildList()){
+            c.resetBattleGround(battleGround);
+            c.setDefaultHealth();
+        }
+
+
+    }
+
+    public void battle(User user){
         displayController.clearConsole();
         displayController.printTitle("Battle");
-        System.out.println("Your Guild");
-        System.out.println(user1.getGuild().getArcherType());
-        System.out.println(user1.getGuild().getKnightType());
-        System.out.println(user1.getGuild().getMageType());
-        System.out.println(user1.getGuild().getHealerType());
-        System.out.println(user1.getGuild().getMythical_CreatureType());
-        System.out.println("\nYour Equipments");
-        displayController.EquipmentOfGuild(user1);
 
-        User enermy=displayController.selectUser(fetchUsers());
-        System.out.println("\nEnemy Guild");
-        System.out.println(enermy.getGuild().getArcherType());
-        System.out.println(enermy.getGuild().getKnightType());
-        System.out.println(enermy.getGuild().getMageType());
-        System.out.println(enermy.getGuild().getHealerType());
-        System.out.println(enermy.getGuild().getMythical_CreatureType());
-        System.out.println("\nEnermy Equipments");
-        displayController.EquipmentOfGuild(enermy);
+        User enemy=displayController.selectUser(users);
+        if(enemy!=null){
+            displayController.clearConsole();
+            displayController.printTitle("Battle");
+            String battleGround = displayController.selectBattleGround();
 
+            for(Character c:user.getGuild().getGuildList()){
+                c.setBattleGround(battleGround);
+            }
+            for(Character c:enemy.getGuild().getGuildList()){
+                c.setBattleGround(battleGround);
+            }
 
+            displayController.clearConsole();
+            displayController.printTitle("Battle");
 
+            int round=1;
+            while(round<11){
+                System.out.printf("<= Round[%d] =>\n",round);
 
+                //User attack
+                System.out.println("User Attack--->");
+                Character userFastestCharacter=user.getGuild().getFastestCharacter();
+                Character enemyDefendingCharacter=enemy.getGuild().getLowestDefenceCharacter();
+                if(userFastestCharacter==null || enemyDefendingCharacter==null){
+                    selectWinner(user,enemy,battleGround);
+                    System.out.println("<=Battle is over=>");
+                    break;
+                }
+                else if(userFastestCharacter instanceof Healer userHealer){
+                    Character userLowestHealthCharacter=user.getGuild().getLowestHealthCharacter();
+                    userHealer.heal(userLowestHealthCharacter);
+                }
+                else{
+                    switch(userFastestCharacter){
+                        case Archer archer->archer.attack(enemyDefendingCharacter);
+                        case Knight knight ->knight.attack(enemyDefendingCharacter);
+                        case Mage mage ->mage.attack(enemyDefendingCharacter);
+                        case Mythical_Creature mythicalCreature ->mythicalCreature.attack(enemyDefendingCharacter);
+                        default -> throw new IllegalStateException("Unexpected value: "+ userFastestCharacter);
+                    }
+                }
 
+                //Enermy attack
 
-        // Battle logic goes here
+                System.out.println("Opponent Attack-->");
+                Character enemyFastestCharacter=enemy.getGuild().getFastestCharacter();
+                Character userDefendingCharacter=user.getGuild().getLowestDefenceCharacter();
+                if(enemyFastestCharacter==null || userDefendingCharacter==null){
+                    selectWinner(user,enemy,battleGround);
+                    System.out.println("<=Battle is over=>");
+                    break;
+                }
+                else if(enemyFastestCharacter instanceof  Healer enemyHealer){
+                    Character enemyLowestHealthCharacter=enemy.getGuild().getLowestHealthCharacter();
+                    enemyHealer.heal(enemyLowestHealthCharacter);
+                }
+                else{
+                    switch(enemyFastestCharacter){
+                        case Archer archer -> archer.attack(userDefendingCharacter);
+                        case Knight knight -> knight.attack(userDefendingCharacter);
+                        case Mage mage -> mage.attack(userDefendingCharacter);
+                        case Mythical_Creature mythicalCreature-> mythicalCreature.attack(userDefendingCharacter);
+                        default -> throw new IllegalStateException("Unexpected value: "+ enemyFastestCharacter);
+                    }
+                }
+                round++;
+
+            }
+        }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

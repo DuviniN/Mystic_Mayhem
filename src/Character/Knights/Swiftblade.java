@@ -1,6 +1,6 @@
 package Character.Knights;
 import Character.Character;
-
+import Character.CharacterState;
 public class Swiftblade extends Knight {
     public Swiftblade() {
         super.setPrice(250.0);
@@ -55,6 +55,7 @@ public class Swiftblade extends Knight {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Swiftblade attacks "+opponent.getClass().getSimpleName());
         }

@@ -1,6 +1,6 @@
 package Character.Mages;
 import Character.Character;
-
+import Character.CharacterState;
 public class Illusionist extends Mage {
     public Illusionist(){
         super.setPrice(120.0);
@@ -41,6 +41,7 @@ public class Illusionist extends Mage {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("illusionist attacks "+opponent.getClass().getSimpleName());
         }

@@ -1,5 +1,6 @@
 package Character.Mages;
 import Character.Character;
+import Character.CharacterState;
 
 public class Warlock extends Mage {
     public Warlock(){
@@ -55,6 +56,7 @@ public class Warlock extends Mage {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Warlock attacks "+opponent.getClass().getSimpleName());
         }

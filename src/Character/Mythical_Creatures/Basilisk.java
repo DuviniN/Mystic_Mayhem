@@ -1,6 +1,6 @@
 package Character.Mythical_Creatures;
 import Character.Character;
-
+import Character.CharacterState;
 public class Basilisk extends Mythical_Creature {
     public Basilisk(){
         super.setPrice(165.0);
@@ -55,6 +55,7 @@ public class Basilisk extends Mythical_Creature {
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
         if(newHealth<=0){
             opponent.setHealth(0);
+            opponent.setState(CharacterState.DEATH);
             System.out.println(opponent.getClass().getSimpleName()+" died");
             System.out.println("Basilisk attacks "+opponent.getClass().getSimpleName());
         }

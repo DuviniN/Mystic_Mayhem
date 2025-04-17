@@ -10,7 +10,7 @@ import Character.CharacterState;
 
     public class Guild {
         private static final int MAX_SIZE = 5;
-        private List<Character> guild = new ArrayList<>();
+        private List<Character> guildList = new ArrayList<>();
 
         private boolean hasArcher = false;
         private boolean hasKnight = false;
@@ -19,30 +19,30 @@ import Character.CharacterState;
         private boolean hasHealer = false;
 
         public void addCharacter(Character character) {
-            if (guild.size() < MAX_SIZE) {
+            if (guildList.size() < MAX_SIZE) {
                 switch (character) {
                     case Archer archer when !hasArcher -> {
-                        guild.add(character);
+                        guildList.add(character);
                         hasArcher = true;
                         System.out.println("Archer added");
                     }
                     case Knight knight when !hasKnight -> {
-                        guild.add(character);
+                        guildList.add(character);
                         hasKnight = true;
                         System.out.println("Knight added");
                     }
                     case Mage mage when !hasMage -> {
-                        guild.add(character);
+                        guildList.add(character);
                         hasMage = true;
                         System.out.println("Mage added");
                     }
                     case Mythical_Creature mythicalCreature when !hasMythicalCreature -> {
-                        guild.add(character);
+                        guildList.add(character);
                         hasMythicalCreature = true;
                         System.out.println("Mythical Creature added");
                     }
                     case Healer healer when !hasHealer -> {
-                        guild.add(character);
+                        guildList.add(character);
                         hasHealer = true;
                         System.out.println("Healer added");
                     }
@@ -55,35 +55,35 @@ import Character.CharacterState;
 
         public Character getArcher() {
             if(hasArcher) {
-                return guild.stream().filter(character -> character instanceof Archer).findFirst().orElse(null);
+                return guildList.stream().filter(character -> character instanceof Archer).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getHealer() {
             if(hasHealer) {
-                return guild.stream().filter(character -> character instanceof Healer).findFirst().orElse(null);
+                return guildList.stream().filter(character -> character instanceof Healer).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getKnight() {
             if(hasKnight) {
-                return guild.stream().filter(character -> character instanceof Knight).findFirst().orElse(null);
+                return guildList.stream().filter(character -> character instanceof Knight).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getMage() {
             if(hasMage) {
-                return guild.stream().filter(character -> character instanceof Mage).findFirst().orElse(null);
+                return guildList.stream().filter(character -> character instanceof Mage).findFirst().orElse(null);
             } else {
                 return null;
             }
         }
         public Character getMythical_Creature() {
             if(hasMythicalCreature) {
-                return guild.stream().filter(character -> character instanceof Mythical_Creature).findFirst().orElse(null);
+                return guildList.stream().filter(character -> character instanceof Mythical_Creature).findFirst().orElse(null);
             } else {
                 return null;
             }
@@ -108,10 +108,13 @@ import Character.CharacterState;
             Character mythicalCreature = getMythical_Creature();
             return mythicalCreature != null ? mythicalCreature.getClass().getSimpleName() : "null";
         }
+        public List<Character> getGuildList() {
+            return guildList;
+        }
 
         public void removeArcher() {
             if (hasArcher) {
-                guild.removeIf(character -> character instanceof Archer);
+                guildList.removeIf(character -> character instanceof Archer);
                 hasArcher = false;
                 System.out.println("Archer removed");
             } else {
@@ -120,7 +123,7 @@ import Character.CharacterState;
         }
         public void removeHealer() {
             if (hasHealer) {
-                guild.removeIf(character -> character instanceof Healer);
+                guildList.removeIf(character -> character instanceof Healer);
                 hasHealer = false;
                 System.out.println("Healer removed");
             } else {
@@ -129,7 +132,7 @@ import Character.CharacterState;
         }
         public void removeKnight() {
             if (hasKnight) {
-                guild.removeIf(character -> character instanceof Knight);
+                guildList.removeIf(character -> character instanceof Knight);
                 hasKnight = false;
                 System.out.println("Knight removed");
             } else {
@@ -138,7 +141,7 @@ import Character.CharacterState;
         }
         public void removeMage() {
             if (hasMage) {
-                guild.removeIf(character -> character instanceof Mage);
+                guildList.removeIf(character -> character instanceof Mage);
                 hasMage = false;
                 System.out.println("Mage removed");
             } else {
@@ -147,7 +150,7 @@ import Character.CharacterState;
         }
         public void removeMythical_Creatures() {
             if (hasMythicalCreature) {
-                guild.removeIf(character -> character instanceof Mythical_Creature);
+                guildList.removeIf(character -> character instanceof Mythical_Creature);
                 hasMythicalCreature = false;
                 System.out.println("Mythical Creature removed");
             } else {
@@ -233,11 +236,16 @@ import Character.CharacterState;
         }
 
         public Character getLowestDefenceCharacter(){
-            Character minDefence=guild.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
-            for(Character c:guild){
-                assert minDefence!=null;
+            Character minDefence=guildList.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
+            if(minDefence==null){
+                return null;
+            }
+            for(Character c:guildList){
                 if(c.getState()!=CharacterState.DEATH && c.getDefence()<minDefence.getDefence()){
                     minDefence=c;
+                }
+                else if(c.getState() != CharacterState.DEATH && c.getDefence()==minDefence.getDefence()){
+                    minDefence=getDefencePriority(minDefence,c);
                 }
             }
             return minDefence;
@@ -245,34 +253,40 @@ import Character.CharacterState;
 
         public Character getFastestCharacter(){
             int count=0;
-            for(Character ch:guild){
+            for(Character ch:guildList){
                 if(ch.getState()==CharacterState.DEFENDING) {
                     count++;
                 }
             }
             if(count==0){
-                for(Character c:guild){
+                for(Character c:guildList){
                     if(c.getState()!=CharacterState.DEATH){
                         c.setState(CharacterState.DEFENDING);
                     }
                 }
             }
-            Character maxSpeed=guild.stream().filter(c -> c.getState() == CharacterState.DEFENDING).findFirst().orElse(null);
-            for(Character c:guild){
-                assert maxSpeed!=null;
+            Character maxSpeed=guildList.stream().filter(c -> c.getState() == CharacterState.DEFENDING).findFirst().orElse(null);
+            if(maxSpeed==null){
+                return null;
+            }
+            for(Character c:guildList){
                 if(c.getState()==CharacterState.DEFENDING && c.getSpeed()>maxSpeed.getSpeed()) {
                     maxSpeed = c;
                 }
+                else if(c.getState()==CharacterState.DEFENDING && c.getSpeed()>maxSpeed.getSpeed()){
+                    maxSpeed=getSpeedPriority(maxSpeed,c);
+                }
             }
-            assert maxSpeed!=null;
             maxSpeed.setState(CharacterState.ATTACKING);
             return maxSpeed;
         }
 
         public Character getLowestHealthCharacter(){
-            Character minHealth=guild.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
-            for(Character c:guild){
-                assert minHealth!=null;
+            Character minHealth=guildList.stream().filter(c -> c.getState() != CharacterState.DEATH).findFirst().orElse(null);
+            if(minHealth == null){
+                return null;
+            }
+            for(Character c:guildList){
                 if(c.getState()!=CharacterState.DEATH && c.getHealth()<minHealth.getHealth()){
                     minHealth=c;
                 }

@@ -7,10 +7,13 @@ import Equipment.Armour.Armour;
 import Equipment.Armour.Chainmail;
 import Equipment.Artefact.Artefact;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import Character.Character;
+
 
 
 public class DisplayController {
@@ -336,42 +339,59 @@ public class DisplayController {
 
     }
 
-    public void displayHomeGround(){
+    public String selectBattleGround(){
+        Scanner input=new Scanner(System.in);
         System.out.println("1.Hillcrest");
         System.out.println("2.Marshland");
         System.out.println("3.Desert");
         System.out.println("4.Arcane");
+        while(true){
+            try{
+                System.out.println("Select your battle ground[1-4]:");
+                int userInput=input.nextInt();
+                if(userInput<1 || userInput>4){
+                    System.out.println("Invalid input.Enter again");
+                    continue;
+                }
+                switch(userInput){
+                    case 1->{return "Hillcrest";}
+                    case 2->{return "Marshland";}
+                    case 3->{return "Desert";}
+                    case 4->{return "Arcane";}
+                }
+            }
+            catch (Exception e){
+                System.out.println("Invalid Input.Please Select your homeground");
+                input.next();
+            }
+        }
+
+
     }
     public User selectUser(HashMap <String,User> user){
-        User[] users=new User[3];
-        int indexes=0;
-        for(User userEnermy:user.values()){
-            users[indexes]=userEnermy;
-            indexes++;
-        }
+        ArrayList<User> enemies=new ArrayList<>(user.values());
         System.out.println("Select the user you want to battle with");
 
         System.out.printf("%-20s | %-20s | %-20s | %-20s|%n","No","User","GoldCoin","XP");
         int index=1;
-        for(User userchose:users){
-            System.out.printf("%-20d | %-20s | %-20.2f | %-20d|%n",index,userchose.getUsername(),userchose.getGoldCoin(),userchose.getXp());
+        for(User enemy:enemies){
+            System.out.printf("%-5d | %-20s | %-20.2f | %-20d|%n",index,enemy.getUsername(),enemy.getGoldCoin(),enemy.getXp());
             index++;
         }
+        System.out.printf("%-5d   Back",index);
         while(true){
-            System.out.println("Select enermy:");
+            System.out.println("\nSelect enermy:");
             Scanner input = new Scanner(System.in);
-            try{
-                int userInput=input.nextInt();
-                if(userInput==1){
-                   return users[0];
+            try {
+                int userInput = input.nextInt();
+                if(userInput<1 || userInput>enemies.size()){
+                    System.out.println("Invalid input.Enter again");
+                    continue;
+                } else if (userInput==index) {
+                    return null;
                 }
-                else if(userInput==2){
-                    return users[1];
-                }
-                else if(userInput==3){
-                    return users[2];
-                }
-                            }
+                return enemies.get(userInput-1);
+            }
             catch (Exception e){
                 System.out.println("Invalid input. Enter again");
                 input.next();
