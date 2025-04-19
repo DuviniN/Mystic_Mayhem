@@ -46,6 +46,7 @@ public class Phoenix extends Mythical_Creature {
     public void attack(Character opponent){
         double newHealth;
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+
         if(newHealth<=0){
             opponent.setHealth(0);
             opponent.setState(CharacterState.DEATH);
@@ -58,4 +59,5 @@ public class Phoenix extends Mythical_Creature {
             System.out.println(opponent.getClass().getSimpleName()+"'s new health : "+" "+newHealth);
         }
     }
+
 }

@@ -18,6 +18,7 @@ import Character.Character;
 
 public class DisplayController {
     public int loginPage(){
+        clearConsole();
         System.out.println("-----------------------------------MYSTIC MAYHEM---------------------------");
         Scanner input =new Scanner(System.in);
         while (true){
@@ -347,7 +348,7 @@ public class DisplayController {
         System.out.println("4.Arcane");
         while(true){
             try{
-                System.out.println("Select your battle ground[1-4]:");
+                System.out.print("Select your battle ground[1-4]:");
                 int userInput=input.nextInt();
                 if(userInput<1 || userInput>4){
                     System.out.println("Invalid input.Enter again");
@@ -370,17 +371,18 @@ public class DisplayController {
     }
     public User selectUser(HashMap <String,User> user){
         ArrayList<User> enemies=new ArrayList<>(user.values());
+        clearConsole();
         System.out.println("Select the user you want to battle with");
 
-        System.out.printf("%-20s | %-20s | %-20s | %-20s|%n","No","User","GoldCoin","XP");
+        System.out.printf("%-5s | %-20s | %-20s | %-20s|%n","No","User","GoldCoin","XP");
         int index=1;
         for(User enemy:enemies){
-            System.out.printf("%-5d | %-20s | %-20.2f | %-20d|%n",index,enemy.getUsername(),enemy.getGoldCoin(),enemy.getXp());
+            System.out.printf("%-5d | %-20s | %-20f | %-20d|%n",index,enemy.getUsername(),enemy.getGoldCoin(),enemy.getXp());
             index++;
         }
         System.out.printf("%-5d   Back",index);
         while(true){
-            System.out.println("\nSelect enermy:");
+            System.out.print("\nSelect enermy:");
             Scanner input = new Scanner(System.in);
             try {
                 int userInput = input.nextInt();

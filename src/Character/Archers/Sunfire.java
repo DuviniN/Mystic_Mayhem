@@ -48,6 +48,7 @@ public class Sunfire extends Archer {
     public void attack(Character opponent){
         double newHealth;
         newHealth=opponent.getHealth()-0.5*(super.getAttack())-0.1*(opponent.getDefence());
+
         if(newHealth<=0){
             opponent.setHealth(0);
             opponent.setState(CharacterState.DEATH);

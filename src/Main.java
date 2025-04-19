@@ -4,19 +4,20 @@ public class Main {
 
         DisplayController displayController =new DisplayController();
         GameController gameController =new GameController();
-        final Scanner input =new Scanner(System.in);
+        //final Scanner input =new Scanner(System.in);
 
-        User user;
-
+        displayController.clearConsole();
         int userChoice=displayController.loginPage();
+        User user;
         if(userChoice==1){
             user=gameController.login();
         }
         else{
             user=gameController.register();
         }
+        boolean flag=true;
 
-        while(true){
+        while(flag){
             userChoice=displayController.displayMenu();
             switch (userChoice){
                 case 1->gameController.battle(user);
@@ -26,9 +27,11 @@ public class Main {
                 case 5->gameController.buyArtefact(user);
                 case 6->gameController.sellArmour(user);
                 case 7->gameController.sellArtefact(user);
-
+                case 8->flag=false;
             }
         }
+        System.out.println("---------Game Finished---------");
+
 
     }
 }

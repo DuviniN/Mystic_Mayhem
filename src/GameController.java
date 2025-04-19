@@ -767,8 +767,9 @@ public class GameController {
     public void battle(User user){
         displayController.clearConsole();
         displayController.printTitle("Battle");
+        HashMap<String, User> userList=fetchUsers();
 
-        User enemy=displayController.selectUser(users);
+        User enemy=displayController.selectUser(userList);
         if(enemy!=null){
             displayController.clearConsole();
             displayController.printTitle("Battle");
@@ -786,15 +787,15 @@ public class GameController {
 
             int round=1;
             while(round<11){
-                System.out.printf("<= Round[%d] =>\n",round);
+                System.out.printf("\n\n<= Round[%d] =>\n",round);
 
                 //User attack
-                System.out.println("User Attack--->");
+                System.out.println("-------------------User Attack----------------->");
                 Character userFastestCharacter=user.getGuild().getFastestCharacter();
                 Character enemyDefendingCharacter=enemy.getGuild().getLowestDefenceCharacter();
                 if(userFastestCharacter==null || enemyDefendingCharacter==null){
                     selectWinner(user,enemy,battleGround);
-                    System.out.println("<=Battle is over=>");
+                    System.out.println("\n<=Battle is over=>");
                     break;
                 }
                 else if(userFastestCharacter instanceof Healer userHealer){
@@ -813,7 +814,7 @@ public class GameController {
 
                 //Enermy attack
 
-                System.out.println("Opponent Attack-->");
+                System.out.println("-------------------Opponent Attack----------------->");
                 Character enemyFastestCharacter=enemy.getGuild().getFastestCharacter();
                 Character userDefendingCharacter=user.getGuild().getLowestDefenceCharacter();
                 if(enemyFastestCharacter==null || userDefendingCharacter==null){
@@ -837,17 +838,15 @@ public class GameController {
                 round++;
 
             }
+            if(round<12){
+                System.out.println("\nPress any key to go back to the menu.");
+                input.nextLine();
+            }
+
+
         }
+
     }
-
-
-
-
-
-
-
-
-
 
 
 
